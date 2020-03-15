@@ -5,9 +5,10 @@ a{
     font-style: none;
     text-decoration: none;
     color: #000;
+    transition-duration: .3s;
 }
 a:hover{
-    color:#ff0;
+    color:#fe0;
 }
 
 .header{
@@ -23,7 +24,7 @@ a:hover{
 }
 
 .top_pannal .container{
-    height: 45px;
+    height: 100px;
     width: 100%;
     max-width: 1170px;
     /* background-color: #ff0; */
@@ -32,13 +33,15 @@ a:hover{
     justify-content: space-between;
     padding-left: 16px;
     padding-right: 16px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
+.top_pannal .container{
+    align-content: center;
+}
 .header_account{
     width: 93px;
-    height: 100%;
+    height: 70%;
     font-size: 14px;
     /* background-color: #0f0; */
     display: flex;
@@ -74,6 +77,8 @@ a:hover{
     justify-content: center;
     border-top: 1px solid #ccc;
     position: sticky;
+    z-index: 99;
+    top:-1px;
 }
 
 .header_wrap .container{
@@ -110,14 +115,14 @@ a:hover{
 }
 
 .pagewrap{
-    height: 700px;
+    height: 660px;
     display: flex;
     justify-content: center;
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 
 .pagewrap img{
-    height: 100%;
+    width: 979px;
 }
 .text{
     display: flex;
@@ -129,19 +134,575 @@ a:hover{
 .pagewrap_text1{
     width: 100%;
     height: 300px;
-    font-size: 75px;
-    background-color: #f0f;
+    font-size: 100px;
+    padding-top: 50px;
+    /* border: 1px solid #000; */
 }
 
 .pagewrap_text2{
     width: 100%;
-    height: 300px;
-    font-size: 50px;
-    background-color: #ff0;
+    height: 200px;
+    font-size: 75px;
+    /* border: 1px solid #000; */
+    color: #fe0;
+    /* display: flex;
+    align-items: flex-end; */
 }
 
-.pagewrap_btn{
-    width: 300px;
-    height: 100px;
+.plagewrap_readmore{
+    width: 200px;
+    height: 80px;
+    margin-top: 20px;
+    border-radius: 8%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    justify-content: center;
 }
 
+.cardsarea{
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    /* background-color: #ccc; */
+}
+
+.cardsarea img{
+    width: 260px;
+    height: 260px;
+}
+
+.card{
+    position: relative;
+    height: 220px;
+}
+
+.card .cardtext{
+    width: 200px;
+    position: absolute;
+    /* background-color: #ccc; */
+    font-size: 30px;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+/* --------onsalearea-------- */
+
+.onsalearea{
+    display: flex;
+    justify-content: center;
+}
+
+
+.onsaleright_top{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.onsaleright_top .textarea{
+    color: #fff;
+     height: 50px;
+     position: absolute;
+     bottom: 35%;
+     left: 35px;
+     font-size: 35px;
+     display: flex;
+     align-items: center;
+}
+.onsaleright_top .shopnow{
+    position: absolute;
+    bottom: 0;
+    left: 35px;
+    bottom: 10%;
+}
+
+.onsaleright_bottom{
+    position: relative;
+}
+
+.onsaleright_bottom .textarea{
+    color: #fff;
+    height: 50px;
+    position: absolute;
+    bottom: 55%;
+    left: 35px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.onsaleright_bottom .subtextarea{
+    color: #fff;
+    height: 50px;
+    position: absolute;
+    bottom: 40%;
+    left: 35px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+.shopnow{
+    font-size: 20px;
+    text-decoration: underline;
+}
+.onsaleright_bottom .shopnow{
+    position: absolute;
+    bottom: 0;
+    left: 35px;
+    bottom: 30%;
+}
+.onsale_left .textarea{
+     /* background-color: #fff; */
+     color: #fff;
+     height: 50px;
+     position: absolute;
+     bottom: 130px;
+     left: 60px;
+     font-size: 35px;
+     display: flex;
+     align-items: center;
+ }
+
+ .onsale_left{
+    margin: 30px;
+    position: relative;
+}
+
+
+.onsale_left .shopnow{
+    position: absolute;
+    bottom: 10%;
+    left: 60px;
+    bottom: 10%;
+}
+
+.onsale_right{
+    margin-top: 35px;
+}
+
+.onsalearea a{
+    color: #fff;
+}
+
+.onsalearea a:hover{
+    color: #000;
+}
+
+/* -----feacherarea----- */
+
+.feacherarea{
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+    /* background-color: #ccc; */
+    margin: 50px auto;
+    position: relative;
+}
+
+.feacherarea .toparea{
+    width: 100%;
+    height: 15%;
+    font-size: 20px;
+    /* background-color: #f0f; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feacherarea .listarea{
+    width: 100%;
+    height: 80%;
+    /* background-color: #ccc; */
+}
+
+.feacherarea .itemlist{
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+}
+
+.feacherarea .btnarea{
+    position: absolute;
+    right: 5%;    
+}
+
+.feacherarea .btnarea button{
+    border: 1px solid #eee;
+    height: 33px;
+    width: 33px;
+    font-size: 16px;
+    margin: 0 8px;
+}
+
+.item{
+    height: 400px;
+    width: 275px;
+    display: inline-block;
+    margin: 0 10px;
+    /* background-color: #aaa; */
+}
+
+.itempic{
+    width: 275px;
+    height: 275px;
+    background-color: #eee;
+}
+
+
+.itempic img{
+    width: 275px;
+    height: 275px;
+}
+.itemname{
+    width: 100%;
+    height: 35px;
+    /* background-color: #555; */
+    font-size: 14px;
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.price{
+    display: flex;
+    height: 35px;
+    /* background-color: #bbb; */
+    font-size: 20px;
+    align-items: flex-end;
+}
+
+
+.price1{
+    margin-right: 10px;
+    color: #bbb;
+    text-decoration: line-through;
+}
+
+.price2{
+    margin-right: 10px;
+}
+
+.operationarea{
+    width: 100%;
+    height: 45px;
+    /* background-color: #00f; */
+    display: flex;
+    align-items: flex-end;
+}
+
+.operationarea button{
+    background-color: #fff;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border: 1px solid #000;
+    border-radius: 8%;
+}
+
+.operationarea button:hover{
+    background-color: #fe0;
+}
+
+.operationarea .addtocart{
+    width: 120px;
+    display: flex;
+}
+
+.operationarea .notavailable{
+    color: gray;
+}
+
+.operationarea .notavailable:hover{
+    background-color: #fff;
+}
+/* ------discountarea------ */
+
+.discountarea{
+    width: 100%;
+    max-width: 1170px;
+    height: 680px;
+    margin: 50px auto;
+    /* background-color: #ccc; */
+    position: relative;
+}
+
+.discountarea .discount_pic{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.discountarea .discount_info{
+    position: absolute;
+    width: 596px;
+    height: 460px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    top: -30px;
+    left: -50px;
+    box-shadow: 10px 10px 15px rgba(0,0, 0, .3);
+}
+
+.discountarea .dicount_link_area{
+    height: 70px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.discountarea .discount_link{
+    font-size: 20px;
+    /* border: 1px solid #000; */
+    width: 150px;
+    height: 40px;
+    background-color: #fe0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8%;
+}
+
+.discountarea .discount_link:hover{
+    background-color: #000;
+    color: #fe0;
+}
+
+/* ------recommandarea------ */
+
+.recommandarea{
+    width: 100%;
+    max-width: 1170px;
+    height: 970px;
+    margin: 50px auto;
+    /* background-color: #ccc; */
+    display: flex;
+}
+
+.recommandarea .recommand_left{
+    width: 570px;
+    height: 100%;
+    /* background-color: #0ff; */
+    position: relative;
+    color: #fff;
+}
+
+.recommandarea .recommand_left_text{
+    font-size: 35px;
+    position: absolute;
+    bottom: 100px;
+    left: 40px;
+}
+
+.recommandarea .recommand_left a{
+    position: absolute;
+    font-size: 20px;
+    left: 40px;
+    bottom: 60px;
+    text-decoration: underline;
+    color: #fff;
+}
+
+.recommandarea .recommand_left a:hover{
+    color: #000;
+}
+
+.recommandarea .textarea{
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 35px;
+}
+.recommandarea .textarea p{
+    margin-top: 30px;
+}
+
+/* ------FeaturedPostsArea------ */
+
+.feature_posts_area{
+    width: 100%;
+    max-width: 1170px;
+    height: 570px;
+    margin: 80px auto;
+    /* background-color: #ccc; */
+}
+
+.feature_posts_area .feature_posts_top{
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 900;
+    
+}
+
+.feature_posts_area .feature_posts_bottom{
+    height: 520px;
+    /* background-color: #aaa; */
+}
+
+.feature_posts_area .post{
+    width: 370px;
+    margin-left: 12px;
+}
+
+.feature_posts_area .post_img{
+    display: flex;
+    justify-content: center;
+}
+
+.feature_posts_area .post_text{
+    margin: 5px;
+    margin-left: 10px;
+}
+
+.feature_posts_area .post_text div{
+    margin-top: 10px;
+}
+.feature_posts_area .date_of_post{
+    display: flex;
+}
+
+.feature_posts_area .date_of_post .month{
+    padding-left: 8px;
+}
+
+.feature_posts_area .content{
+    font-size: 14px;
+    padding: 5px 0;
+    font-weight:lighter;
+    line-height: 22px;
+}
+
+.feature_posts_area .post_list{
+    display: flex;
+}
+
+
+/* ------contect_info------ */
+
+.contect_info {
+    background-color: rgba(125,125,125,.1);
+    padding-top: 50px;
+}
+
+.contect_info .container{
+    width: 100%;
+    max-width: 1170px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.contect_info .container div{
+    width: 22.4%;
+}
+
+.contect_info .information{
+    font-size: 40px;
+}
+
+.contect_info .textbox{
+    margin: 0 15px;
+    position: relative;
+}
+.contect_info .textbox h3{
+    font-size: 20px;
+}
+
+.contect_info .textbox h4{
+    line-height: 35px;
+}
+
+.contect_info .textbox p{
+    font-size: 14px;
+}
+
+.contect_info .textbox div{
+    width: 100%;
+    height: 35px;
+}
+
+.contect_info .contect_info_text{
+    margin-bottom: 40px;
+}
+
+.contect_info input[type=text]{
+    width: 100%;
+    padding: 12px 5px;
+    margin: 4px 0;
+    box-sizing: border-box;
+}
+
+.contect_info .send{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #ffd;
+    bottom: 50%;
+    right: 5px;
+}
+
+.contect_info .socialmedia{
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+.contect_info .socialmedia div{
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    font-weight: 900;
+    background-color: #000;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contect_info .link_btn{
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+}
+
+.link_btn:hover{
+    background-color: #fe0;
+    color:#fe0;
+}
+
+
+/* ------footer_bottom------ */
+
+.footer_bottom{
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    background-color: #ffee00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
