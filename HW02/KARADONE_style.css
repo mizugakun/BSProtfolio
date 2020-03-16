@@ -229,7 +229,8 @@ a:hover{
 
 .cardsarea{
     margin: 100px auto;
-    padding: 100px;
+    padding-bottom: 20px;
+    padding-top: 150px;
     height: 200px;
     display: flex;
     justify-content: center;
