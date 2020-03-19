@@ -341,7 +341,6 @@ body{
 .main_page_history_btn{
     width: 164px;
     height: 58px;
-    margin: 50px 0;
 }
 
 .main_page_history_btn .thing_text{
@@ -471,11 +470,16 @@ body{
     color: #0bf;
 }
 
+.main_page_news_link{
+    display: flex;
+    justify-content: center;
+}
+
 
 .main_page_news_SeeAll_btn{
     width: 180px;
     height: 58px;
-    margin: auto;
+    /* margin: auto; */
     font-size: 14px;
     text-transform: uppercase;
 }
