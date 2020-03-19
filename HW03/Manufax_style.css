@@ -737,7 +737,7 @@ body{
 
     .main_page_history_container{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column-reverse;;
     }
 
     .main_page_history_img{
@@ -748,10 +748,11 @@ body{
     .main_page_history_img img{
         height: 100%;;
     }
-    .main_page_history_container{
+    .main_page_history_content{
         width: 100%;
         padding: 0 15px;
         margin: auto;
+        box-sizing: border-box;
     }
 
     .main_page_history_content_txt h2{
@@ -766,6 +767,10 @@ body{
 
     .main_page_history_content_txt p{
         line-height:26px;
+    }
+
+    .main_page_history_link{
+        margin-top: 20px;
     }
 
     .main_page_buildingType_item{
