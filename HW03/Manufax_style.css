@@ -61,9 +61,6 @@ body{
     margin-right: 15px;
 }
 
-.quick_link_links .icon{
-    color: #fff;
-}
 .quick_link_subContainer p{
     font-weight: 300;
     font-size: 14px;
@@ -72,6 +69,11 @@ body{
 
 .quick_link_address{
     width: 408px;
+}
+
+.quick_link_btn{
+    margin: 0 8px;
+    line-height: 30px;
 }
 
 .quick_link_tel{
