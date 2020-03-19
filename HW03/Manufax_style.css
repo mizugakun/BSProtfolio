@@ -746,8 +746,9 @@ body{
     }
 
     .main_page_history_img img{
-        height: 100%;;
+        width: 100%;
     }
+
     .main_page_history_content{
         width: 100%;
         padding: 0 15px;
@@ -782,12 +783,24 @@ body{
     .main_page_news_content_containter{
         display: block;
         padding: 15px;
+        
     }
     .main_page_news_item{
         width: 100%;
-        padding: 0;
+        padding-bottom: 25px;
+        box-sizing: border-box;
     }
 
+    .news_author_date_container .date{
+        height: 25px;
+    }
+
+    .main_page_news_img{
+        margin-bottom: 10px;
+    }
+    .news_title{
+        margin-bottom: 6px;
+    }
     .footer_main{
         display: block;
         padding-bottom: 30px;
