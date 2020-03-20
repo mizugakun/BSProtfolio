@@ -601,6 +601,12 @@ body{
         padding: 10px 0;
     }
 
+    .quick_link_address,
+    .quick_link_tel,
+    .quick_link_links{
+        width: 100%;
+    }
+
     .header_main_container{
         display: block;
     }
