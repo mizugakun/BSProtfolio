@@ -849,6 +849,10 @@ button{
         padding: 0;
         margin: 0;
     }
+
+    .blog .row{
+        padding: 0;
+    }
     
     .category .item{
         width: 100%;
