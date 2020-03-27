@@ -945,6 +945,11 @@ button{
 }
 
 @media screen and (min-width: 1200px){
+    .display_product,
+    .container{
+        max-width: 1170px;
+    }
+
     .background_img{
         height: 825px;
     }
