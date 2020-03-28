@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .TNGA_advantage {
+            max-width: 960px;
+            margin: auto;
+        }
+
+        .TNGA_advantage_topic{
+            display: none;
+        }
+
+        .advatage_wrap{
+            position: relative;
+            margin-bottom: 100px;
+        }
+
+        .advantage_info{
+            width: 355px;
+            position: relative;
+        }
+
+        .TNGA_advantage .advatage_wrap:nth-child(2n) .advantage_info{
+            margin-left: auto;
+        }
+
+        .advantage_info .title {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #c00;
+            font-size: 30px;
+            color: #fff;
+            position: relative;
+            height: 150px
+        }
+
+        .advantage_info .title .title_txt{
+            display: flex;
+        }
+
+        .advantage_info .title h2 {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            font-weight: 300;
+        }
+
+        .advantage_info .title .number {
+            font-weight: 200;
+            padding-top: 10px;
+            padding-bottom: 5px;
+            height: 120px;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            justify-items: center;
+
+        }
+
+        .advatage_wrap:nth-child(2n) .advantage_info .title{
+            justify-content: flex-end;
+        }
+
+        .advatage_wrap:nth-child(2n) .advantage_info .title .number {
+            order: 1;
+        }
+
+        .advantage_info .title .number p {
+            line-height: 75%;
+            margin: 0;
+            writing-mode: vertical-lr;
+            text-orientation: sideways-right;
+            font-size: 110px;
+            box-sizing: border-box;
+
+        }
+
+        .advantage_info .content{
+            position: absolute;
+            width: 100%;
+            color: #fff;
+            background-color: #000;
+            padding: 16px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .advantage_info .content h3{
+            font-size: 30px;
+        }
+
+        .advantage_info .content p{
+            font-size: 24px;
+        }
+
+        .img_area{
+            padding-left: 165px;
+            position: relative;
+        }
+
+
+        .advatage_wrap:nth-child(2n) .img_area{
+            padding-left: 5px;
+        }
+
+        .video_btn{
+            position: absolute;
+            right: 90px;
+            top: 60%;
+        }
+
+
+        .TNGA_advantage .advatage_wrap:nth-child(2n) .video_btn{
+            right: initial;
+            left: 0px;
+        }
+
+        .img_area::before{
+            content: '';
+            width: 439px;
+            height: 290px;
+            background-color: #eee;
+            position: absolute;
+            right: 0;
+            top: -80px;
+            z-index: -1;
+        }
+
+        .TNGA_advantage .advatage_wrap:nth-child(2n) .img_area::before{
+            top: -60px;
+            right: 165px;
+            height: 413px;
+        }
+
+        .revolution_info{
+            background-color: #eee;
+            width: 682px;
+            position:relative;
+            left: 50px;
+            top: -46px;
+            padding: 25px;
+        }
+
+        .advatage_wrap:nth-child(2n) .revolution_info{
+            left: initial;
+            margin-left: auto;
+        }
+
+        .revolution_info .title{
+            color: #c00;
+            position: relative;
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .revolution_info .title h3{
+            background-color: #eee;
+        }
+
+        .revolution_info .title::after{
+            content: '';
+            position: absolute;
+            border-top: 2px solid #c00;
+            top: 50%;
+            right: 0;
+            width: 71% ;
+        }
+        
+        .revolution_txt .detail h4{
+            color: #fff;
+            background-color: #000;
+            display: inline-block;
+            padding: 2px 5px;
+        }
+
+        .revolution_txt .detail p{
+            margin: 5px 0 5px 20px;
+            position: relative;
+        }
+
+        .revolution_txt .detail p::before{
+            content: '．';
+            color: #c00;
+            position:absolute;
+            left: -17px;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 class="TNGA_advantage_topic">TOYOTA TNGA's ADVANTAGE</h1>
+    <article class="TNGA_advantage">
+        <section class="advatage_wrap control">
+            <div class="advantage_info">
+                <div class="title">
+                    <div class="number">
+                        <p>01</p>
+                    </div>
+                    <div class="title_txt">
+                        <h2>操控樂趣</h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>人人滿意的駕駛體驗</h3>
+                    <p>透過最佳重量分配，實現平順起步；直線穩定加速，過灣同時保持車身平穩，帶給駕駛更靈敏的道路反餽，享受隨心馳騁的行駛快感。</p>
+                </div>
+            </div>
+            <div class="img_area">
+                <a href="#"><img src="pic/advantage-1-video-button-bg.png" alt=""></a>
+                <a href="#" class="video_btn"><img src="pic/video-icon.png" alt=""></a>
+            </div>
+            <div class="revolution_info">
+                <div class="title">
+                    <h3>因為我們做了這些革新</h3>
+                </div>
+                <div class="revolution_txt">
+                    <div class="detail">
+                        <h4>低重心設計</h4>
+                        <p>透過低重心設計，不僅呈現更低伏的外觀，更能減少車身側傾，保持高速行駛文定性。</p>
+                    </div>
+                    <div class="detail">
+                        <h4>車體剛性硬化</h4>
+                        <p>車身結構採用超高強度剛才，提高車輛穩定性，同時節由雷射強化焊接技術，大幅增加焊點數量，提升車身抗扭剛性，強化駕馭穩定性及安全性。</p>
+                    </div>
+                    <div class="detail">
+                        <h4>四輪獨立懸吊</h4>
+                        <p>搭載全心四輪獨立懸吊設定，透過懸吊的高成載強度，保持輪胎抓地力，同時兼顧轉向靈敏度與清晰路感回饋，提升駕馭樂趣。</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="advatage_wrap safe">
+            <div class="advantage_info">
+                <div class="title">
+                    <div class="number">
+                        <p>02</p>
+                    </div>
+                    <div class="title_txt">
+                        <h2>安全守護</h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>行車更安性的高剛性車體</h3>
+                    <p>您的愛車會妥善保護您，強悍穩固的車身可使您安全無虞。世界及的安全功能讓您輕鬆自如享受旅程、毫無後顧之憂。</p>
+                </div>
+            </div>
+            <div class="img_area">
+                <a href="#"><img src="pic/advantage-2-video-button-bg.png" alt=""></a>
+                <a href="#" class="video_btn"><img src="pic/video-icon.png" alt=""></a>
+            </div>
+            <div class="revolution_info">
+                <div class="title">
+                    <h3>因為我們做了這些革新</h3>
+                </div>
+                <div class="revolution_txt">
+                    <div class="detail">
+                        <h4>主動安全</h4>
+                        <p>以先進的TSS系統，主動偵測路況，輔助判斷路況並維持行車安全。</p>
+                    </div>
+                    <div class="detail">
+                        <h4>被動安全</h4>
+                        <p>堅固的高剛性車體、使用熱沖壓材料的高度抗扭鋼板，強化座艙對意外事故的保護力。</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="advatage_wrap comfortable">
+            <div class="advantage_info">
+                <div class="title">
+                    <div class="number">
+                        <p>03</p>
+                    </div>
+                    <div class="title_txt">
+                        <h2>舒適乘坐</h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>令人放鬆的車室空間</h3>
+                    <p>車室空間設計著重人體工學，透過方向盤、踏板等位置優化，追求更舒適的駕駛位置，並以新型座椅設計，提高座椅包覆性，致力實現長途駕駛不疲勞的舒適駕馭體驗。</p>
+                </div>
+            </div>
+            <div class="img_area">
+                <a href="#"><img src="pic/advantage-3-video-button-bg.png" alt=""></a>
+                <a href="#" class="video_btn"><img src="pic/video-icon.png" alt=""></a>
+            </div>
+            <div class="revolution_info">
+                <div class="title">
+                    <h3>因為我們做了這些革新</h3>
+                </div>
+                <div class="revolution_txt">
+                    <div class="detail">
+                        <h4>駕駛位置最佳化</h4>
+                        <p>針對駕駛位置進行徹底的修改，讓駕馭者可如同握手般自然且舒適地操控方向盤。</p>
+                    </div>
+                    <div class="detail">
+                        <h4>被動安全</h4>
+                        <p>考量駕駛座進車內的高度，透過前擋風玻璃位置的調整，達到忙屈最小化，使駕駛視野更開闊，同步提升駕馭安全。</p>
+                    </div>
+                    <div class="detail">
+                        <h4>更寧靜的車室</h4>
+                        <p>採用最新三層結構的隔音材料，與引擎、變速相的零件改革，將座艙的震動壓抑在最小限度，提供乘客舒適安靜的感受。</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="advatage_wrap for_people">
+            <div class="advantage_info">
+                <div class="title">
+                    <div class="number">
+                        <p>04</p>
+                    </div>
+                    <div class="title_txt">
+                        <h2>以人為本</h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>使用者導向的貼心設計</h3>
+                    <p>藉由高度人性化的介面整合、傳遞車輛資訊，豐富日常駕駛體驗。從提升油耗表現到行李箱空間最適化，更加貼近使用者真正所需與習慣，並給予及時回應。</p>
+                </div>
+            </div>
+            <div class="img_area">
+                <a href="#"><img src="pic/advantage-4-video-button-bg.png" alt=""></a>
+                <a href="#" class="video_btn"><img src="pic/video-icon.png" alt=""></a>
+            </div>
+            <div class="revolution_info">
+                <div class="title">
+                    <h3>因為我們做了這些革新</h3>
+                </div>
+                <div class="revolution_txt">
+                    <div class="detail">
+                        <h4>優異油耗表現</h4>
+                        <p>以AURIS為例，更強勁的高效引擎將熱效率提升至40％，達到世界級水準，屢屢突破燃油效率新境界。</p>
+                    </div>
+                    <div class="detail">
+                        <h4>行李箱空間最適化</h4>
+                        <p>以PRIUS為例，透過將電池位置一到後坐下方，讓行李廂擁有更大的空間。</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="advatage_wrap proud">
+            <div class="advantage_info">
+                <div class="title">
+                    <div class="number">
+                        <p>05</p>
+                    </div>
+                    <div class="title_txt">
+                        <h2>引以為傲</h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>極具吸引力的精心設計</h3>
+                    <p>TNGA車款擁有讓人忍不住回頭的新潮外觀，讓駕駛充滿自信的駕馭快感！不僅讓車主展現個人風格，也能讓擁有者都能引以為傲。</p>
+                </div>
+            </div>
+            <div class="img_area">
+                <a href="#"><img src="pic/advantage-5-video-button-bg.png" alt=""></a>
+                <a href="#" class="video_btn"><img src="pic/video-icon.png" alt=""></a>
+            </div>
+            <div class="revolution_info">
+                <div class="title">
+                    <h3>因為我們做了這些革新</h3>
+                </div>
+                <div class="revolution_txt">
+                    <div class="detail">
+                        <h4>設計概念</h4>
+                        <p>TNGA低重心設計，不僅呈現更低伏的運動外觀，更講究品質內裝的一致性</p>
+                    </div>
+                    <div class="detail">
+                        <h4>環保概念</h4>
+                        <p>為了對環保保護盡一份心力，我們全面提升傳統引擎、變速相庾猷彥負荷動力的動力效能。</p>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
