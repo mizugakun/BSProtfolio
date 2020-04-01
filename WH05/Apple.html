@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .chooseProduct,
+        .chooseProduct ul{
+            display: flex;
+            justify-content: center;
+        }
+
+        .chooseProduct li{
+            padding: 0 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 chooseProduct">
+            </div>
+            <div class="col-8 chooseType">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var product = {
+            iPhone:{
+                p11_pro:{id:'iPhone11 pro', color:'silver', storage:'64G', network:'WIFI',price:'54200',pic:'',url:'http://'},
+                p11:{id:'iPhone11', color:'white', storage:'128G', network:'WIFI',price:'41500',pic:'',url:'http://'},
+                p08:{id:'iPhone8', color:'black', storage:'256G', network:'WIFI',price:'31000',pic:'',url:'http://'}
+            },
+            Mac: {},
+            iPad:{},
+            Watch:{}
+        }
+
+        var Node_Name = 'chooseProduct';
+        window.onloadend = addProduct(Node_Name);
+        
+        function addProduct(class_Name){
+            
+            let Node = document.getElementsByClassName(class_Name)[0];
+            debugger;
+            let list = document.createElement('ul');
+            Node.appendChild(list);
+            for(let item in product){
+                let list_Item = document.createElement('li');
+                
+                let radio_btn = document.createElement('input');
+                radio_btn.setAttribute('type','radio');
+                radio_btn.setAttribute('name','Apple_product');
+                radio_btn.setAttribute('id',`choose_${item.toString()}`);
+                
+                let lb = document.createElement('label');
+                lb.setAttribute('for',`choose_${item.toString()}`)
+                lb.innerHTML = item.toString();
+                
+                list_Item.appendChild(radio_btn);
+                list_Item.appendChild(lb);
+                list.appendChild(list_Item);
+            }
+        }
+
+        console.log(product.iPhone);
+    </script>
+</body>
+</html>

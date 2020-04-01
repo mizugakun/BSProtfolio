@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .col-8,
+        .row,
+        .number_panel_row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .number_guess,
+        .number_display,
+        .number_guess {
+            border: 1px solid #000;
+        }
+
+        .number_display h1 {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .btn_guess {
+            background-color: #00f;
+            color: #fff;
+        }
+
+        .btn_area {
+            padding: 20px 0;
+        }
+
+        .number_panel {
+            flex-direction: column;
+            align-content: center;
+        }
+
+        .number_panel button {
+            background-color: #000;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+        }
+
+        .number_guess {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row number_display">
+            <div class="col-8">
+                <h1>1~100</h1>
+            </div>
+        </div>
+        <div class="row btn_area">
+            <div class="col-8">
+                <button class="btn_guess" onclick="restart()">restart</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <label class="number_guess" for=""></label>
+            </div>
+        </div>
+        <div class="row number_panel">
+            <div class="col-4 number_panel_row">
+                <div>
+                    <button onclick="enterNumber(this)">1</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">2</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">3</button>
+                </div>
+            </div>
+            <div class="col-4 number_panel_row">
+                <div>
+                    <button onclick="enterNumber(this)">4</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">5</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">6</button>
+                </div>
+            </div>
+            <div class="col-4 number_panel_row">
+                <div>
+                    <button onclick="enterNumber(this)">7</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">8</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">9</button>
+                </div>
+            </div>
+            <div class="col-4 number_panel_row">
+                <div>
+                    <button onclick="clearInput()">x</button>
+                </div>
+                <div>
+                    <button onclick="enterNumber(this)">0</button>
+                </div>
+                <div>
+                    <button onclick="guessAnswer()">v</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let upper = 100;
+            let lower = 1;
+            let answer = -1;
+            var input = document.getElementsByClassName('number_guess')[0];
+            var range = document.getElementsByClassName('number_display')[0].querySelector('h1');
+            
+            window.onloadend = ansRandom();
+            function ansRandom(){
+                answer = Math.floor(Math.random()*100 + 1);
+            }
+
+            function guessAnswer(){                
+                let guess = parseInt(input.innerHTML);
+                if(guess == answer){
+                    window.alert('you win');
+                    restart();
+                }
+                else{
+                    changeRange(guess);
+                }
+                debugger;
+            }
+
+            function changeRange(guess){
+                if(guess <= upper &&  guess >= lower){
+                    if(guess > answer){
+                        upper = guess-1;
+                    }else if(guess < answer){
+                        lower = guess+1;
+                    }
+                    displayRange();
+                }else{
+                    window.alert('your gussing is out of range');
+                }
+            }
+
+            function displayRange(){
+                if(lower === upper){
+                    window.alert('you lose');
+                    restart();
+                }else{   
+                    range.innerHTML = `${lower}~${upper}`;
+                    clearInput();
+                }
+            }
+
+            function enterNumber(btn){
+                let btn_txt = btn.innerHTML;
+                let text = input.innerHTML;
+                input.innerHTML = text + btn_txt;
+            }
+
+            function clearInput(){
+                input.innerHTML = '';
+            }
+
+            function restart(){
+                upper = 100;
+                lower = 0;
+                displayRange();
+                ansRandom();
+            }
+        </script>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
