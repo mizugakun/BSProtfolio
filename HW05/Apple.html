@@ -1,8 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Document</title>
     <style>
         *{
@@ -10,7 +14,9 @@
             padding: 0;
             list-style: none;
         }
-
+        
+        .chooseType,
+        .chooseType a,
         .chooseProduct,
         .chooseProduct ul{
             display: flex;
@@ -19,6 +25,19 @@
 
         .chooseProduct li{
             padding: 0 12px;
+        }
+        .chooseType,
+
+        .chooseProduct{
+            margin: auto;
+        }
+
+        .chooseType img{
+            width: 100%;
+        }
+
+        .chooseType p{
+            text-align: center;
         }
     </style>
 </head>
@@ -35,45 +54,126 @@
 
 
     <script>
+        
         var product = {
             iPhone:{
-                p11_pro:{id:'iPhone11 pro', color:'silver', storage:'64G', network:'WIFI',price:'54200',pic:'',url:'http://'},
-                p11:{id:'iPhone11', color:'white', storage:'128G', network:'WIFI',price:'41500',pic:'',url:'http://'},
-                p08:{id:'iPhone8', color:'black', storage:'256G', network:'WIFI',price:'31000',pic:'',url:'http://'}
+                p11_pro:{id:'iPhone11 pro', color:'silver', storage:'64G', network:'WIFI',price:'54,200',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-11-pro-select-2019-family?wid=882&amp;hei=1058&amp;fmt=jpeg&amp;qlt=80&amp;op_usm=0.5,0.5&amp;.v=1567812930312',url:'https://www.apple.com/tw/shop/buy-iphone/iphone-11-pro?afid=p238%7Cs6DNouKZ8-dc_mtid_18707vxu38484_pcrid_409077916549_pgrid_78274905255_&cid=aos-tw-kwgo-iphone--slid---product--'},
+                p11:{id:'iPhone11', color:'white', storage:'128G', network:'WIFI',price:'41,500',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1566956144418',url:'https://www.apple.com/tw/shop/buy-iphone/iphone-11?afid=p238%7CsBi4eYfX8-dc_mtid_18707vxu38484_pcrid_409118963696_pgrid_78274905055_&cid=aos-tw-kwgo-iphone--slid---product--'},
+                p08:{id:'iPhone8', color:'black', storage:'256G', network:'WIFI',price:'31,000',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone8-select-2019-family?wid=882&amp;hei=1058&amp;fmt=jpeg&amp;qlt=80&amp;op_usm=0.5,0.5&amp;.v=1550795431127',url:'https://www.apple.com/tw/shop/buy-iphone/iphone-8?afid=p238%7CsMmBJRR3O-dc_mtid_18707vxu38484_pcrid_381907686853_pgrid_46018736866_&cid=aos-tw-kwgo-iphone--slid---product--'}
             },
-            Mac: {},
-            iPad:{},
-            Watch:{}
+            Mac: {
+                air:{id:'MacBook Air', color:'silver', storage:'1T', network:'WIFI',price:'32,000',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713862468',url:'https://www.apple.com/tw/macbook-air/'},
+                mac_16:{id:'MacBook Pro 16 inch', color:'silver', storage:'1T', network:'WIFI',price:'89,900',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16touch-space-select-201911_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573165435411',url:'https://www.apple.com/tw/macbook-pro-16/'},
+                imac:{id:'iMac', color:'silver', storage:'1T', network:'WIFI',price:'47,900',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/imac-215-selection-hero-201706?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1570231130149',url:'https://www.apple.com/tw/imac/'},
+                imac_pro:{id:'iMac Pro', color:'silver', storage:'1T', network:'WIFI',price:'159,900',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/imacpro-27-retina-selection-hero?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1511982294002',url:'https://www.apple.com/tw/imac-pro/'},
+                imac_mini:{id:'iMac mini', color:'silver', storage:'512G', network:'WIFI',price:'35,900',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mac-mini-hero-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1558559818403',url:'https://www.apple.com/tw/mac-mini/'}
+                },
+            iPad:{
+                air:{id:'iPad Air', color:'silver', storage:'1T', network:'WIFI',price:'32,000',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-air-select-wifi-gold-201911_GEO_TW?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1574905656454',url:'https://www.apple.com/tw/ipad-air/'},
+                pro:{id:'iPad pro', color:'silver', storage:'1T', network:'WIFI',price:'32,000',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-12-11-select-202003_GEO_TW?wid=890&amp;hei=1100&amp;fmt=jpeg&amp;qlt=80&amp;op_usm=0.5,0.5&amp;.v=1583430765550',url:'https://www.apple.com/tw/ipad-pro/'},
+                mini:{id:'iPad mini', color:'silver', storage:'1T', network:'WIFI',price:'32,000',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-201911_GEO_TW?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1574901818973',url:'https://www.apple.com/tw/ipad-mini/'},
+            },
+            Watch:{
+                Series_5:{id:'MacBook Air', color:'silver', storage:'1T', network:'WIFI',price:'32,000',pic:'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MTPK2_VW_PF+watch-44-stainless-silver-cell-5s_VW_PF_WF_CO_GEO_TW?wid=750&hei=712&fmt=p-jpg&qlt=80&op_usm=0.5,0.5&.v=1566419579642,1567126748851',url:'https://www.apple.com/tw/apple-watch-series-5/?afid=p238%7CslH8Vv3ZF-dc_mtid_18707vxu38484_pcrid_382141984223_pgrid_16718749142_&cid=aos-tw-kwgo-watch--slid---product--'},
+            }
         }
 
-        var Node_Name = 'chooseProduct';
-        window.onloadend = addProduct(Node_Name);
+        var Apple_product = 'chooseProduct';
+        window.onload = initailize();
         
-        function addProduct(class_Name){
-            
+        function initailize(){
+            let product_func_array = [newRadioBtn,newLabel];
+            newList(Apple_product,product_func_array);
+        }
+
+        function newRadioBtn(item){
+            let radio_btn = document.createElement('input');
+                radio_btn.setAttribute('type','radio');
+                radio_btn.setAttribute('name','Apple_product');
+                radio_btn.setAttribute('id',`${item.toString()}`);
+                radio_btn.setAttribute('onclick','addProduct(this)'); 
+            return radio_btn;
+        }
+
+        function newLabel(item){
+            let lb = document.createElement('label');
+                lb.setAttribute('for',`${item.toString()}`)
+                lb.innerHTML = item.toString();
+            return lb;
+        }
+
+        function newImage(path){
+            let newImage = document.createElement('img');
+                newImage.setAttribute('src',path);
+                newImage.setAttribute('alt','product_img');
+            return newImage;
+        }
+
+        function newParagraph(content){
+            let newParagraph = document.createElement('p');
+                newParagraph.innerHTML = content.toString();
+            return newParagraph;
+        }
+
+        function newLink(path){
+            let newLink = document.createElement('a');
+                newLink.setAttribute('src',path);
+                newLink.setAttribute('alt','product_img');
+                newLink.innerHTML = 'see more';
+            return newLink;
+        }
+
+
+        function newList(class_Name,func_array){
             let Node = document.getElementsByClassName(class_Name)[0];
-            debugger;
             let list = document.createElement('ul');
             Node.appendChild(list);
             for(let item in product){
                 let list_Item = document.createElement('li');
                 
-                let radio_btn = document.createElement('input');
-                radio_btn.setAttribute('type','radio');
-                radio_btn.setAttribute('name','Apple_product');
-                radio_btn.setAttribute('id',`choose_${item.toString()}`);
-                
-                let lb = document.createElement('label');
-                lb.setAttribute('for',`choose_${item.toString()}`)
-                lb.innerHTML = item.toString();
-                
-                list_Item.appendChild(radio_btn);
-                list_Item.appendChild(lb);
+                func_array.forEach(_func => {
+                    let child = _func(item);
+                    list_Item.appendChild(child);
+                });
                 list.appendChild(list_Item);
             }
         }
 
-        console.log(product.iPhone);
+        function addProduct(radio_btn){
+            let Node = document.getElementsByClassName('chooseType')[0];
+            Node.innerHTML = '';
+            let product_id = radio_btn.id;
+            let product_type = product[product_id];
+            for(let info in product_type){
+                let product_info = product_type[info];
+                
+                let p_id = newParagraph(product_info.id);
+                let p_color = newParagraph(product_info.color);
+                let p_storage = newParagraph(product_info.storage);
+                let p_network = newParagraph(product_info.network);
+                let p_price = newParagraph(product_info.price);
+                let p_image = newImage(product_info.pic);
+                let p_link = newLink(product_info.url);
+
+                let p_div = document.createElement('div');
+                p_div.setAttribute('class','col-4');
+                p_div.appendChild(p_image);
+                p_div.appendChild(p_id);
+                p_div.appendChild(p_color);
+                p_div.appendChild(p_storage);
+                p_div.appendChild(p_network);
+                p_div.appendChild(p_price);
+                p_div.appendChild(p_link);
+                Node.appendChild(p_div);
+
+            }
+
+        }
     </script>
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
 </html>
