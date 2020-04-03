@@ -480,9 +480,9 @@
         var origin_price = 0;
 
         function clearAll() {
-            // clear_display_product();
-            // clear_choosed_product();
-            // clear_customizing();
+            clear_display_product();
+            clear_choosed_product();
+            clear_customizing();
             price_array = {}
             origin_price = 0;
         }
@@ -503,7 +503,7 @@
         }
 
         function show_products(btn) {
-            clear_display_product();
+            clearAll();
             product_selected = btn.id.toString();
             let products = Apple_product[product_selected];
             for (let type in products) {
