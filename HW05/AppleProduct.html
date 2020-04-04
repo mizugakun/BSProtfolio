@@ -23,14 +23,17 @@
 
         .price,
         .product_Type,
-        .custom_label {
+        .custom_label,
+        .choose_color_area,
+        #product_img{
             display: flex;
             justify-content: center;
         }
 
         .price,
-        .product_Type {
-            padding: 30px 0;
+        .product_Type,
+        .choose_color_area {
+            padding: 10px 0;
         }
 
         .show_product_area,
@@ -49,7 +52,7 @@
             transition-duration: 0.2s;
         }
 
-        .product_Type button:hover{
+        .product_Type button:hover {
             color: #fff;
         }
 
@@ -60,6 +63,10 @@
         .product_Type button:active {
             color: #000;
             background-color: #ddd;
+        }
+
+        .customize{
+            padding-left: 45px;
         }
 
         .customize .title {
@@ -125,7 +132,7 @@
             display: none;
         }
 
-        .radio_btn label {
+        .radio_btn label .color_circle {
             padding: 15px;
             box-sizing: border-box;
         }
@@ -135,7 +142,8 @@
         }
 
         #product_img img {
-            width: 100%;
+            max-height: 290px;
+            /* width: 100%; */
         }
 
         #choosed_product {
@@ -143,7 +151,7 @@
         }
 
         .choosed_product_wrap {
-            padding-top: 50px;
+            padding-top: 20px;
             position: sticky;
             top: 0;
         }
@@ -166,6 +174,56 @@
             justify-content: center;
             color: #bbb;
         }
+
+        .choose_color {
+            width: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .color_circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 100%;
+            position: relative;
+            margin: 10px 40px;
+        }
+
+        .color_circle P {
+            position: absolute;
+            width: 80px;
+            bottom: -50px;
+            right: -75%;
+            text-align: center;
+        }
+
+        .hover_circle::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -4px;
+            margin: auto;
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 100%;
+            z-index: -1;
+        }
+
+        .color_circle:hover .hover_circle::after {
+            border: 1px solid rgba(0, 0, 0, .2);
+        }
+
+        .choose_color_area .radio_btn input:checked~.color_circle .hover_circle::after {
+            border: 2px solid rgba(107, 107, 107, 0.5);
+        }
+
+        .choose_color_area .radio_btn p {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -175,7 +233,7 @@
             <div class="col">
                 <div class="product_Type">
                     <button onclick="show_products(this)" id="Mac">Mac</button>
-                    <button onclick="" id="iPad">iPad</button>
+                    <button onclick="show_products(this)" id="iPad">iPad</button>
                     <button onclick="" id="IPhone">iPhone</button>
                     <button onclick="" id="iWatch">iWatch</button>
                 </div>
@@ -234,15 +292,29 @@
                 <div class="choosed_product_wrap">
                     <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16touch-silver-select-201911_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573153623825"
                         alt="">
-                    <!-- <div class="choose_color_area row" id="color">
-                        <div class="radio_btn">
-                            <input type="radio" name="custom_color" id="gray">
-                            <label for="gray" class="custom_label">
-                                <label class="show_color"></label>
-                                <p>gray</p>
+                    <div class="choose_color_area">
+                        <div class="radio_btn" id="color">
+                            <input type="radio" id="gold" name="choose_color" class="choose_color_radio">
+                            <label class=color_circle for="gold" style="background-color: rgb(255, 216, 131)">
+                                <label class="hover_circle" for=""></label>
                             </label>
+                            <p>gold</p>
                         </div>
-                    </div> -->
+                        <div class="radio_btn" id="color">
+                            <input type="radio" id="silver" name="choose_color" class="choose_color_radio">
+                            <label class=color_circle for="silver" style="background-color: rgb(219, 219, 219)">
+                                <label class="hover_circle" for=""></label>
+                            </label>
+                            <p>silver</p>
+                        </div>
+                        <div class="radio_btn" id="color">
+                            <input type="radio" id="space-gray" name="choose_color" class="choose_color_radio">
+                            <label class=color_circle for="space-gray" style="background-color: rgb(141, 141, 141)">
+                                <label class="hover_circle" for=""></label>
+                            </label>
+                            <p>space-gray</p>
+                        </div>
+                    </div>
                     <div class="price row">
                         <h4>售價：NT$</h4>
                         <h4 id="product_price_sum">89900</h4>
@@ -314,9 +386,21 @@
                     id: 'MacBook_Air',
                     price: 1299,
                     color: {
-                        gray: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713862468',
-                        silver: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713861325',
-                        golden: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-gold-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713859040'
+                        gray: {
+                            name: 'space-gray',
+                            rgb: [141, 141, 141],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713862468'
+                        },
+                        silver: {
+                            name: 'silver',
+                            rgb: [219, 219, 219],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713861325'
+                        },
+                        gold: {
+                            name: 'gold',
+                            rgb: [255, 216, 131],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-gold-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1541713859040'
+                        },
                     },
                     custom_info: {
                         Processor: {
@@ -361,8 +445,16 @@
                     id: 'MacBookPro_13',
                     price: 1799,
                     color: {
-                        gray: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp13touch-space-select-201807_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1539892088247',
-                        silver: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp13touch-silver-select-201807_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1539892092211'
+                        gray: {
+                            name: 'space-gray',
+                            rgb: [141, 141, 141],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp13touch-space-select-201807_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1539892088247'
+                        },
+                        silver: {
+                            name: 'silver',
+                            rgb: [219, 219, 219],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp13touch-silver-select-201807_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1539892092211'
+                        }
                     },
                     custom_info: {
                         Processor: {
@@ -410,8 +502,16 @@
                     id: 'MacBookPro_16',
                     price: 2799,
                     color: {
-                        gray: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16touch-space-select-201911_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573165435411',
-                        silver: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16touch-silver-select-201911_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573153623825'
+                        gray: {
+                            name: 'space-gray',
+                            rgb: [141, 141, 141],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16touch-space-select-201911_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573165435411'
+                        },
+                        silver: {
+                            name: 'silver',
+                            rgb: [219, 219, 219],
+                            path: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16touch-silver-select-201911_GEO_TW?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573153623825'
+                        },
                     },
                     custom_info: {
                         Processor: {
@@ -469,7 +569,234 @@
                     }
                 }
             },
-            iPad: {},
+            iPad: {
+                iPad_Pro_11:{
+                    name:'11-inch iPad Pro',
+                    id:'iPad_Pro_11',
+                    price: 799,
+                    color:{
+                        gray:{
+                            name:'space-gray',
+                            rgb: [141,141,141],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-cell-spacegray-202003?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1583544704305'
+                        },
+                        silver:{
+                            name:'silver',
+                            rgb: [219,219,219],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-cell-silver-202003?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1583541571656'
+                        }
+                    },
+                    custom_info:{
+                        storage:{
+                            _128gb:{
+                                content:'128GB',
+                                price:0
+                            },
+                            _256gb:{
+                                content:'256GB',
+                                price:200
+                            },
+                            _512gb:{
+                                content:'512GB',
+                                price:400
+                            },
+                            _1tb:{
+                                content:'1TB',
+                                price:600
+                            }
+                        },
+                        connectivity:{
+                            wifi:{
+                                content:'Wi-Fi',
+                                price:0
+                            },
+                            wifi_cellular:{
+                                content: 'Wi-Fi + Cellular',
+                                price: 150
+                            }
+                        }
+                    }
+                },
+                iPad_Pro_13:{
+                    name:'12.9-inch iPad Pro',
+                    id:'iPad_Pro_13',
+                    price: 999,
+                    color:{
+                        gray:{
+                            name:'space-gray',
+                            rgb: [141,141,141],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-cell-spacegray-202003?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1583552336142'
+                        },
+                        silver:{
+                            name:'silver',
+                            rgb: [219,219,219],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-cell-silver-202003?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1583550059785'
+                        }
+                    },
+                    custom_info:{
+                        storage:{
+                            _128gb:{
+                                content:'128GB',
+                                price:0
+                            },
+                            _256gb:{
+                                content:'256GB',
+                                price:200
+                            },
+                            _512gb:{
+                                content:'512GB',
+                                price:400
+                            },
+                            _1tb:{
+                                content:'1TB',
+                                price:600
+                            }
+                        },
+                        connectivity:{
+                            wifi:{
+                                content:'Wi-Fi',
+                                price:0
+                            },
+                            wifi_cellular:{
+                                content: 'Wi-Fi + Cellular',
+                                price: 150
+                            }
+                        }
+                    }
+                },
+                iPad_mini:{
+                    name:'iPad mini',
+                    id:'iPad_mini',
+                    price: 399,
+                    color:{
+                        gray:{
+                            name:'space-gray',
+                            rgb: [141,141,141],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-201911?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825378087'
+                        },
+                        silver:{
+                            name:'silver',
+                            rgb: [219,219,219],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-silver-201911?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825370078'
+                        },
+                        gold:{
+                            name:'gold',
+                            rgb: [255, 216,131],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-gold-201911?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573825318739'
+                        }
+                    },
+                    custom_info:{
+                        storage:{
+                            _64gb:{
+                                content:'64GB',
+                                price:0
+                            },
+                            _256gb:{
+                                content:'256GB',
+                                price:150
+                            },
+                        },
+                        connectivity:{
+                            wifi:{
+                                content:'Wi-Fi',
+                                price:0
+                            },
+                            wifi_cellular:{
+                                content: 'Wi-Fi + Cellular',
+                                price: 130
+                            }
+                        }
+                    }
+                },
+                _iPad:{
+                    name:'iPad',
+                    id:'_iPad',
+                    price: 329,
+                    color:{
+                        gray:{
+                            name:'space-gray',
+                            rgb: [141,141,141],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-wifi-select-space-201909_GEO_US?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1567443069807'
+                        },
+                        silver:{
+                            name:'silver',
+                            rgb: [219,219,219],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-wifi-select-silver-201909_GEO_US?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1567299783684'
+                        },
+                        gold:{
+                            name:'gold',
+                            rgb: [255, 216,131],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-wifi-select-gold-201909_GEO_US?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1567302192901'
+                        }
+                    },
+                    custom_info:{
+                        storage:{
+                            _32gb:{
+                                content:'32GB',
+                                price:0
+                            },
+                            _128gb:{
+                                content:'128GB',
+                                price:100
+                            },
+                        },
+                        connectivity:{
+                            wifi:{
+                                content:'Wi-Fi',
+                                price:0
+                            },
+                            wifi_cellular:{
+                                content: 'Wi-Fi + Cellular',
+                                price: 130
+                            }
+                        }
+                    }
+                },
+                iPad_Air:{
+                    name:'iPad Air',
+                    id:'iPad_Air',
+                    price: 499,
+                    color:{
+                        gray:{
+                            name:'space-gray',
+                            rgb: [141,141,141],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-spacegray-201911?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573800138431'
+                        },
+                        silver:{
+                            name:'silver',
+                            rgb: [219,219,219],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-silver-201911?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573800144529'
+                        },
+                        gold:{
+                            name:'gold',
+                            rgb: [255, 216,131],
+                            path: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-gold-201911?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1573800135063'
+                        }
+                    },
+                    custom_info:{
+                        storage:{
+                            _64gb:{
+                                content:'64GB',
+                                price:0
+                            },
+                            _256gb:{
+                                content:'256GB',
+                                price:150
+                            },
+                        },
+                        connectivity:{
+                            wifi:{
+                                content:'Wi-Fi',
+                                price:0
+                            },
+                            wifi_cellular:{
+                                content: 'Wi-Fi + Cellular',
+                                price: 130
+                            }
+                        }
+                    }
+                },
+            },
             iPhone: {},
             iWatch: {}
         }
@@ -509,6 +836,9 @@
             for (let type in products) {
                 append_product_at_display_area(products[type]);
             }
+            let zone = document.querySelector('.show_product_area');
+            // debugger;
+            zone.scrollIntoView();
         }
 
         function append_product_at_display_area(item) {
@@ -521,7 +851,7 @@
                 `<input type="radio" name="select_product" id="${item.id}" onclick="show_product_info(this)">` +
                 `<label class="item" for="${item.id}">` +
                 '<div id="product_img">' +
-                `<img src="${item.color.gray}" alt="">` +
+                `<img src="${item.color.gray.path}" alt="">` +
                 '</div>' +
                 '<div id="product_name">' +
                 `<h3>${item.name}</h3>` +
@@ -536,18 +866,54 @@
             clear_customizing();
             product_wanted = btn.id.toString();
             origin_price = Apple_product[product_selected][product_wanted].price;
-            append_wanted_product_img(Apple_product[product_selected][product_wanted].color.gray);
+            append_wanted_product_img(Apple_product[product_selected][product_wanted].color.gray.path);
             append_customizing_info();
         }
 
         function append_wanted_product_img(img_path) {
             let choosed_product_wrap = document.querySelector('.choosed_product_wrap');
             choosed_product_wrap.innerHTML =
-                `<img src="${img_path}" alt="">` +
-                '<div class="price row">' +
+                `<img src="${img_path}" alt="">`;
+            append_color_radio_button();
+        }
+
+        function append_color_radio_button() {
+            let colors = Apple_product[product_selected][product_wanted].color;
+            let Node = document.querySelector('.choosed_product_wrap');
+            let colors_btn_area = document.createElement('div');
+            colors_btn_area.setAttribute('class', 'choose_color_area');
+
+            for (let c in colors) {
+                let colors_btn = document.createElement('div');
+                colors_btn.setAttribute('class', 'radio_btn');
+                colors_btn.setAttribute('id', 'color');
+                colors_btn.innerHTML =
+                    `<input type="radio" id="${c}" name="choose_color" class="choose_color_radio" onclick="change_color(this)">` +
+                    `<label class=color_circle for="${c}" style="background-color: rgb(${colors[c].rgb[0]}, ${colors[c].rgb[1]}, ${colors[c].rgb[2]})">` +
+                    '<label class="hover_circle" for=""></label>' +
+                    '</label>' +
+                    `<p>${colors[c].name}</p>`;
+                colors_btn_area.appendChild(colors_btn);
+            }
+            Node.appendChild(colors_btn_area);
+            let first_color = colors_btn_area.children[0].querySelector('input');
+            first_color.checked = true;
+            append_product_price();
+        }
+
+        function append_product_price() {
+            let Node = document.querySelector('.choosed_product_wrap');
+            let price_tag = document.createElement('div');
+            price_tag.setAttribute('class', 'price row');
+            price_tag.innerHTML =
                 '<h4>$</h4>' +
-                `<h4 id="product_price_sum">${origin_price.toString()}</h4>` +
-                '</div>';
+                `<h4 id="product_price_sum">${origin_price.toString()}</h4>`;
+            Node.appendChild(price_tag);
+        }
+
+        function change_color(btn){
+            let choosed_color = btn.id;
+            document.querySelector('.choosed_product_wrap>img').setAttribute('src',`${Apple_product[product_selected][product_wanted].color[choosed_color].path}`)
         }
 
         function append_customizing_info() {
@@ -559,28 +925,27 @@
                 customizing_type.setAttribute('class', `${product_wanted}_${info}`);
 
                 let customizing_info_title = document.createElement('h5');
-                customizing_info_title.innerHTML = `${info}`;
+                customizing_info_title.innerHTML = `${info} `;
 
                 customize.appendChild(customizing_type);
                 customizing_type.appendChild(customizing_info_title);
-                price_array[`${info}`] = 0;
+                price_array[`${info} `] = 0;
                 for (let custom_detial in customizing_info[info]) {
                     let radio_button = document.createElement('div');
                     radio_button.setAttribute('class', 'radio_btn');
                     radio_button.innerHTML =
-                        `<input type="radio" name="${info}" id="${custom_detial}" onclick="calculate_price(this,${customizing_info[info][custom_detial].price})">` +
-                        `<label for="${custom_detial}" class="custom_label">` +
+                        `<input type = "radio" name="${info}" id="${custom_detial}" onclick="calculate_price(this,${customizing_info[info][custom_detial].price})"> ` +
+                        `<label for= "${custom_detial}" class="custom_label">` +
                         '<div class="col-8" id="custom_content">' +
-                        `<p>${customizing_info[info][custom_detial].content}</p>` +
+                        `<p> ${customizing_info[info][custom_detial].content}</p> ` +
                         '</div>' +
                         '<div class="col-4" id="custom_price">' +
-                        `<p>+${customizing_info[info][custom_detial].price.toString()} USD</p>` +
+                        `<p> +${customizing_info[info][custom_detial].price.toString()} USD</p> ` +
                         '</div>' +
                         '</label>';
-
                     customizing_type.appendChild(radio_button);
                 }
-                let first_radio_btn = document.querySelector(`.customize>.${product_wanted}_${info}`).children[1];
+                let first_radio_btn = customizing_type.children[1];
                 first_radio_btn.querySelector('#custom_price>p').innerHTML = '';
                 first_radio_btn.querySelector('input').checked = true;
             }

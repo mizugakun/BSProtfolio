@@ -7,54 +7,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <style>
-
-        *{
-           margin: 0;
-           padding: 0;
-           list-style: none;
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
-        .item{
+
+        .choose_color_area{
+            display: flex;
+            justify-content: center;
+        }
+
+        .choose_color {
             width: 64px;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 10px;
         }
-        .color_circle{
+
+        .color_circle {
             width: 32px;
             height: 32px;
-            /* border: 1px solid #000; */
-            background-color: rgb(255, 216, 131);
             border-radius: 100%;
             position: relative;
+            margin: 10px 40px;
         }
-        .color_circle P{
-            color: rgba(0,0,0,0);
-            position:absolute;
-            bottom: -40px;
+
+        .color_circle P {
+            position: absolute;
+            width: 80px;
+            bottom: -50px;
+            right: -75%;
+            text-align: center;
         }
 
         .hover_circle::after{
-            content:'';
+            content: '';
             width: 40px;
             height: 40px;
-            position:absolute;
+            position: absolute;
             top: 0;
             bottom: 0;
             right: -4px;
             margin: auto;
-            border: 1px solid rgba(0,0,0,0);
+            border: 1px solid rgba(0, 0, 0, 0);
             border-radius: 100%;
+            z-index: -1;
         }
 
-        .color_circle:hover .hover_circle::after{
-            border: 1px solid rgba(0,0,0,.2);
+        .color_circle:hover .hover_circle::after {
+            border: 1px solid rgba(0, 0, 0, .2);
         }
 
-        .color_circle:hover p{
-            color: rgba(0,0,0,1);
+        .choose_color_area .radio_btn input:checked~.color_circle .hover_circle::after{
+            border: 2px solid rgba(107, 107, 107, 0.5);
         }
 
+        .choose_color_area .radio_btn p{
+            text-align: center;
+        }
+
+        .radio_btn input {
+            display: none;
+        }
+
+        
     </style>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -63,12 +81,28 @@
 </head>
 
 <body>
-    <div class="item">
-        <label class=color_circle for="">
-            <label class="hover_circle" for=""></label>
+    <div class="choose_color_area">
+        <div class="radio_btn" id="color">
+            <input type="radio" id="gold" name="choose_color" class="choose_color_radio">
+            <label class=color_circle for="gold" style="background-color: rgb(255, 216, 131)">
+                <label class="hover_circle" for=""></label>
+            </label>
             <p>gold</p>
-        </label>
-        
+        </div>
+        <div class="radio_btn" id="color">
+            <input type="radio" id="silver" name="choose_color" class="choose_color_radio">
+            <label class=color_circle for="silver" style="background-color: rgb(219, 219, 219)">
+                <label class="hover_circle" for=""></label>
+            </label>
+            <p>silver</p>
+        </div>
+        <div class="radio_btn" id="color">
+            <input type="radio" id="space-gray" name="choose_color" class="choose_color_radio">
+            <label class=color_circle for="space-gray" style="background-color: rgb(141, 141, 141)">
+                <label class="hover_circle" for=""></label>
+            </label>
+            <p>space-gray</p>
+        </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
