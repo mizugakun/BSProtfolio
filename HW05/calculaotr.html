@@ -1,54 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
     <style>
         .col-2,
         .col-3,
-        .col-6
-        {
+        .col-6 {
             padding: 0;
         }
 
-        *,.row{
+        *,
+        .row {
             margin: 0;
             padding: 0;
             list-style: none;
         }
 
-        .panel button{
+        .panel button {
             height: 46px;
             background-color: orange;
             width: 100%;
             color: #fff;
         }
 
-        .panel button.dark{
+        .panel button.dark {
             background-color: #777;
         }
 
-        .panel button.gray{
+        .panel button.gray {
             background-color: #aaa;
         }
 
 
-        .col-2{
+        .col-2 {
             margin: auto;
             margin-top: 50px;
         }
 
-        .calculator{
+        .calculator {
             background-color: #333;
         }
 
-        .output label{
+        .output label {
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
@@ -59,8 +61,9 @@
             font-size: 30px;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <div class="container">
         <div class="row">
@@ -108,9 +111,8 @@
     <script>
         let record = 0;
         let tmp = 0;
-        
+
         var screen = document.querySelector('.output>label');
-        var isFloat = false;
         var ifOperate = false;
         var ifClear = false;
         var pressEqual = false;
@@ -124,84 +126,143 @@
             nothing: func_nothing
         };
 
-        function pressNumber(btn){
+        function pressNumber(btn) {
             ifOperate = true;
             pressEqual = false;
-            if(ifClear){screen.innerHTML = '0';ifClear = false};
+            if (ifClear) { screen.innerHTML = '0'; ifClear = false };
             screen.innerHTML = (screen.innerHTML == '0') ? btn.innerHTML : screen.innerHTML.concat(btn.innerHTML);
         }
 
-        function pressDot(btn){
-            if(!isFloat){
-                isFloat = true;
-                // screen.innerHTML = screen.innerHTML.concat('.');
-                pressNumber(btn);
+        function pressDot(btn) {
+            if (!screen.innerHTML.includes('.')) {
+                screen.innerHTML += '.';
             }
         }
 
-        function clearAll(){
+        function clearAll() {
             screen.innerHTML = '0';
-            isFloat = false;
             ifClear = false;
             ifOperate = false;
             pressEqual = false;
             operator = 'nothing';
         }
 
-        function reciprocal(){
+        function reciprocal() {
             let screenNumber = screen.innerHTML;
-            if(screenNumber == 0){
+            if (screenNumber == 0) {
                 return;
-            }else{
-                if(record === parseFloat(screenNumber)) record = parseFloat(screenNumber) * -1;
-                screen.innerHTML = (screenNumber.includes('-')) ? screenNumber.replace('-','') : '-'+screenNumber;
+            } else {
+                if (record === parseFloat(screenNumber)) record = parseFloat(screenNumber) * -1;
+                screen.innerHTML = (screenNumber.includes('-')) ? screenNumber.replace('-', '') : '-' + screenNumber;
             }
         }
 
-        function operation(btn){
+        function operation(btn) {
             let num = parseFloat(screen.innerHTML);
             pressEqual = false;
             ifClear = true;
-            if(ifOperate){
-                record = _function[operator](record,num);
+            if (ifOperate) {
+                record = Math.round10(_function[operator](record, num), -10);
                 screen.innerHTML = record.toString();
             }
             operator = btn.id;
             ifOperate = false;
         }
 
-        function func_getQuotient(a,b){
-            return a%b;
+        function func_getQuotient(a, b) {
+            return a % b;
         }
-        function func_divide(a,b){
-            return a/b;
+        function func_divide(a, b) {
+            return a / b;
         }
-        function func_multiple(a,b){
-            return a*b;
+        function func_multiple(a, b) {
+            return a * b;
         }
-        function func_minus(a,b){
-            return a-b;
+        function func_minus(a, b) {
+            return a - b;
         }
-        function func_plus(a,b){
-            return a+b;
+        function func_plus(a, b) {
+            return a + b;
         }
-        function func_equal(a,b){
-            if(!pressEqual){
+        function func_equal(a, b) {
+            if (!pressEqual) {
                 tmp = parseFloat(screen.innerHTML);
             }
-            record = _function[operator](record,tmp);
+            record = Math.round10(_function[operator](record, tmp), -10);
             screen.innerHTML = record;
             pressEqual = true;
             ifOperate = false;
         }
-        function func_nothing(a,b){
+        function func_nothing(a, b) {
             return b;
         }
+
+
+        (function () {
+            /**
+             * Decimal adjustment of a number.
+             *
+             * @param {String}  type  The type of adjustment.
+             * @param {Number}  value The number.
+             * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+             * @returns {Number} The adjusted value.
+             */
+            function decimalAdjust(type, value, exp) {
+                // If the exp is undefined or zero...
+                if (typeof exp === 'undefined' || +exp === 0) {
+                    return Math[type](value);
+                }
+                value = +value;
+                exp = +exp;
+                // If the value is not a number or the exp is not an integer...
+                if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+                    return NaN;
+                }
+                // Shift
+                value = value.toString().split('e');
+                // debugger;
+                value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+                // Shift back
+                value = value.toString().split('e');
+                return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+            }
+
+            // Decimal round
+            if (!Math.round10) {
+                Math.round10 = function (value, exp) {
+                    return decimalAdjust('round', value, exp);
+                };
+            }
+            // Decimal floor
+            if (!Math.floor10) {
+                Math.floor10 = function (value, exp) {
+                    return decimalAdjust('floor', value, exp);
+                };
+            }
+            // Decimal ceil
+            if (!Math.ceil10) {
+                Math.ceil10 = function (value, exp) {
+                    return decimalAdjust('ceil', value, exp);
+                };
+            }
+        })();
+
+
+
+
+
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

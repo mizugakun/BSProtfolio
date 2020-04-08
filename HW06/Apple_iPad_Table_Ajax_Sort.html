@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>APPLE iPad</h1>
+    <div id=msg></div>
+</body>
+
+<script>
+    // const titleArray = ['SKU','price','category','name'];
+
+    var _body = document.getElementsByTagName('body')[0];
+    var _table = document.createElement('table');
+    _body.appendChild(_table);
+    let ipad = '';
+    var sortType = '';
+    var ifDescending = false;
+
+    window.onload = function () {
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            // document.getElementById('msg').innerHTML = this.responseText;
+            ipad = JSON.parse(this.responseText);
+            addThead(ipad);
+        }
+        xhr.open("GET", 'http://127.0.0.1:5500/000_mizugakun/Day5/iPad.json');
+        xhr.send();
+        // debugger;
+        // addThead(ipad);
+        // debugger;
+    };
+
+    function addThead(array) {
+        let thead = document.createElement('thead');
+        let _tr = document.createElement('tr');
+        for (let txt in array[0]) {
+            let _th = document.createElement('th');
+            _th.innerHTML = txt;
+            // _th.setAttribute('type','button');
+            _th.setAttribute('onclick', 'sorting(this)');
+            _tr.appendChild(_th);
+        }
+        thead.appendChild(_tr);
+        _table.append(thead);
+
+        let _tbody = document.createElement('tbody');
+        _table.append(_tbody);
+
+        addTbody(array);
+    }
+
+    function addTbody(array) {
+        let _tbody = document.querySelector('tbody');
+        for (let p in array) {
+            let _tr = document.createElement('tr');
+            for (let info in array[p]) {
+                let _td = document.createElement('td');
+                _td.innerHTML = array[p][info];
+                _tr.appendChild(_td);
+            }
+            _tbody.appendChild(_tr);
+        }
+    }
+
+    function sorting(btn) {
+        let key = btn.innerHTML;
+        chooseSort(key);
+        if (!ifDescending) {
+            ipad.sort(function (a, b) {
+                if (a[key] > b[key]) return 1;
+                if (a[key] < b[key]) return -1;
+                return 0;
+            });
+        }else{
+            ipad.sort(function (a, b) {
+                if (a[key] < b[key]) return 1;
+                if (a[key] > b[key]) return -1;
+                return 0;
+            });
+        }
+        replaceInfo();
+    }
+
+    function chooseSort(key) {
+        if (key != sortType) {
+            sortType = key;
+            ifDescending = false;
+        } else {
+            ifDescending = !ifDescending;
+        }
+    }
+
+    function replaceInfo(){
+        let _tbody = document.querySelector('tbody');
+        _tbody.innerHTML = '';
+        addTbody(ipad);
+    }
+
+</script>
+
+</html>
