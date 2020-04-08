@@ -4,8 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
     <title>Document</title>
     <style>
+        *{
+           margin: 0;
+           padding: 0;
+           list-style: none;
+        }
+
         h1 {
             text-align: center;
         }
@@ -18,16 +28,27 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        th{
+            cursor: pointer;
+        }
+        
+        th p{
+            display: inline-block;
+        }
+
+        th i{
+            font-size: 16px;
+            width: 10px;
+        }
     </style>
 </head>
 
 <body>
     <h1>APPLE iPad</h1>
-    <div id=msg></div>
 </body>
 
 <script>
-    // const titleArray = ['SKU','price','category','name'];
 
     var _body = document.getElementsByTagName('body')[0];
     var _table = document.createElement('table');
@@ -39,16 +60,11 @@
     window.onload = function () {
         let xhr = new XMLHttpRequest();
         xhr.onload = function () {
-            // document.getElementById('msg').innerHTML = this.responseText;
             ipad = JSON.parse(this.responseText).products;
-            debugger;
             addThead(ipad);
         }
         xhr.open("GET", 'https://bs-frontend.azurewebsites.net/api/Apple/IPad');
         xhr.send();
-        // debugger;
-        // addThead(ipad);
-        // debugger;
     };
 
     function addThead(array) {
@@ -56,9 +72,11 @@
         let _tr = document.createElement('tr');
         for (let txt in array[0]) {
             let _th = document.createElement('th');
-            _th.innerHTML = txt;
+            _th.innerHTML = txt + '<i class="fas fa-sort"></i>';
+            // _th.innerHTML = txt;
             // _th.setAttribute('type','button');
             _th.setAttribute('onclick', 'sorting(this)');
+            _th.setAttribute('id', txt);
             _tr.appendChild(_th);
         }
         thead.appendChild(_tr);
@@ -84,7 +102,7 @@
     }
 
     function sorting(btn) {
-        let key = btn.innerHTML;
+        let key = btn.id;
         chooseSort(key);
         if (!ifDescending) {
             ipad.sort(function (a, b) {
@@ -99,7 +117,27 @@
                 return 0;
             });
         }
+        changeIcons(btn);
         replaceInfo();
+    }
+
+    function changeIcons(btn){
+        resetAllIcons();
+
+        let _i = document.querySelector(`th#${btn.id}>i`)
+        if(ifDescending){
+            _i.setAttribute('class','fas fa-sort-down');
+        }else{
+            _i.setAttribute('class','fas fa-sort-up');
+        }
+    }
+
+
+    function resetAllIcons(){
+        let _i = document.querySelectorAll('th>i');
+        for(let cl of _i){
+            cl.setAttribute('class','fas fa-sort');
+        }
     }
 
     function chooseSort(key) {
