@@ -40,7 +40,8 @@
         let xhr = new XMLHttpRequest();
         xhr.onload = function () {
             // document.getElementById('msg').innerHTML = this.responseText;
-            ipad = JSON.parse(this.responseText);
+            ipad = JSON.parse(this.responseText).products;
+            debugger;
             addThead(ipad);
         }
         xhr.open("GET", 'https://bs-frontend.azurewebsites.net/api/Apple/IPad');
