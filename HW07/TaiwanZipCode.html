@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cities' Zip Code in Taiwan</h1>
+    <button onclick="showCitiesZipCode()">show data</button>
+    <script src='Modules/MyHelper.js'></script>
+    
+    <script>
+        let cities = '';
+        let city_ZipCode=[];
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                cities = JSON.parse(this.response);
+            };
+            xhr.open("GET", 'https://raw.githubusercontent.com/2opex/Portfolio/master/JS/TaiwanAddress/TaiwanAddress.json');
+            xhr.send();
+        }
+
+        let _body = $g('body')[0];
+
+        function showCitiesZipCode() {
+            let fragment = new DocumentFragment();
+            for (let i = 0; i < cities.length; i++) {
+                city_ZipCode.push(getZipCode(cities[i]));
+                appendTableRow(city_ZipCode[i], fragment);
+            }
+            _body.appendChild(fragment);
+        }
+
+        function appendTableRow(city_ZipCode, fragment) {
+            // let fragment = new DocumentFragment();
+            let _table = $c('table');
+            for (let data of city_ZipCode.Districts) {
+                let _tr = $c('tr');
+
+                let city_td = $c('td');
+                let district_td = $c('td');
+                let zipCode_td = $c('td');
+
+                city_td.textContent = city_ZipCode.City;
+                district_td.textContent = data.District;
+                zipCode_td.textContent = data.ZipCode;
+
+                _tr.appendChild(city_td);
+                _tr.appendChild(district_td);
+                _tr.appendChild(zipCode_td);
+
+                _table.appendChild(_tr);
+            }
+            fragment.appendChild(_table);
+        }
+
+
+        function getZipCode(city) {
+            let City_ZipCode = {};
+            City_ZipCode.City = city.CityName;
+            City_ZipCode.Districts = [];
+            for (let i = 0; i < city.AreaList.length; i++) {
+                // let ZipData = {};
+                // ZipData.District = city.AreaList[i].AreaName;
+                // ZipData.ZipCode = city.AreaList[i].ZipCode;
+                // City_ZipCode.Districts.push(ZipData);
+                City_ZipCode.Districts.push({District:city.AreaList[i].AreaName, ZipCode:city.AreaList[i].ZipCode})
+            }
+            // debugger;
+            return City_ZipCode;
+        }
+
+
+
+        let person = {
+            name: '123456',
+            age: 29
+        }
+    </script>
+</body>
+
+</html>
