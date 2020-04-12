@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Mask Map by mizugakun</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map,
+        .container,
+        .row {
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            max-width: initial;
+        }
+
+        .container,
+        .col-10,
+        .col-2 {
+            padding: 0;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #side_panel {
+            width: 200px;
+        }
+
+        .form-control {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1CNBuvsLlTItt12aeQZd9IfyMTCvlwZw&callback=initMap"
+        async defer></script>
+    <script>
+
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14
+            });
+        }
+
+        let maskInfo;
+        $.ajax({
+            type: "Get",
+            url: "https://maskmap.azurewebsites.net/api/mask/getmaskstock",
+            success: function (response) {
+                maskInfo = analyzeData(JSON.parse(response).features);
+                putMarker(maskInfo);
+                getUserPosition();
+                addClickEvent();
+            }
+        });
+
+        function getUserPosition() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(pos);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function addClickEvent() {
+
+        }
+
+        function analyzeData(data) {
+            let res = [];
+            data.forEach(element => {
+                res.push({
+                    name: element.properties.name,
+                    position: {
+                        lat: element.geometry.coordinates[1],
+                        lng: element.geometry.coordinates[0]
+                    },
+                    masksLeft: element.properties.masksLeft,
+                    childMasksLeft: element.properties.childMasksLeft,
+                    icon: determineMarker(element.properties.masksLeft, element.properties.childMasksLeft)
+                })
+            });
+            return res;
+        }
+
+        function putMarker(array) {
+            array.forEach(element => {
+                let marker = new google.maps.Marker({
+                    position: element.position,
+                    map: map,
+
+                    icon: element.icon
+                });
+                let str = `Adult: ${element.masksLeft}</br>Children:${element.childMasksLeft}`
+                var infowindow = new google.maps.InfoWindow({
+                    content: str
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                })
+            })
+        };
+
+        function determineMarker(adult, child) {
+            if (adult != 0 && child != 0) {
+                return 'icon/01_have_mask.png';
+            } else if (adult == 0 && child == 0) {
+                return 'icon/04_sold_out.png';
+            } else {
+                return 'icon/02_only_one_type.png';
+            }
+        };
+    </script>
+</body>
+
+</html>
