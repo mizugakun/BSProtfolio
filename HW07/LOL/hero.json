@@ -1,0 +1,292 @@
+[
+    {
+        "name":"ahri",
+        "title":"the nine tailed fox",
+        "alignment":"Ionia",
+        "role":["mage"],
+        "stats":{
+            "HP":526,
+            "HP_perlevel":92,
+            
+            "HP_regen":6.5,
+            "HP_regen_perlevel":0.6,
+            
+            "MP":418,
+            "MP_perlevel":25,
+            
+            "MP_regen":8,
+            "MP_regen_perlevel":0.8,
+            
+            "Move_Speed":330,
+            
+            "ATK":53.04,
+            "ATK_perlevel":3,
+
+            "ATK_range":550,
+            
+            "PHY_ARMOR":20.88,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Innately connected to the latent power of Runeterra, Ahri is a vastaya who can reshape magic into orbs of raw energy. She revels in toying with her prey by manipulating their emotions before devouring their life essence. Despite her predatory nature, Ahri retains a sense of empathy as she receives flashes of memory from each soul she consumes.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
+        }
+    },
+    {
+        "name":"akali",
+        "title":"the rogue assassin",
+        "alignment":"Ionia",
+        "role":["assassin"],
+        "stats":{
+            "HP":575,
+            "HP_perlevel":95,
+            
+            "HP_regen":8,
+            "HP_regen_perlevel":0.5,
+            
+            "MP":200,
+            "MP_perlevel":0,
+            
+            "MP_regrn":50,
+            "MP_regrn_perlevel":0,
+            
+            "Move_Speed":345,
+            
+            "ATK":62.4,
+            "ATK_perlevel":3.3,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":23,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":37,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali now strikes alone, ready to be the deadly weapon her people need. Though she holds onto all she learned from her master Shen, she has pledged to defend Ionia from its enemies, one kill at a time. Akali may strike in silence, but her message will be heard loud and clear: fear the assassin with no master.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
+        }
+    },
+    {
+        "name":"ashe",
+        "title":"the frost archer",
+        "alignment":"Freljord",
+        "role":["marksman"],
+        "stats":{
+            "HP":539,
+            "HP_perlevel":85,
+            
+            "HP_regen":3.5,
+            "HP_regen_perlevel":0.55,
+            
+            "MP":280,
+            "MP_perlevel":32,
+            
+            "MP_regrn":6.972,
+            "MP_regrn_perlevel":0.4,
+            
+            "Move_Speed":325,
+            
+            "ATK":61,
+            "ATK_perlevel":2.96,
+
+            "ATK_range":600,
+            
+            "PHY_ARMOR":26,
+            "PHY_ARMOR_perlevel":3.4,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Iceborn warmother of the Avarosan tribe, Ashe commands the most populous horde in the north. Stoic, intelligent, and idealistic, yet uncomfortable with her role as leader, she taps into the ancestral magics of her lineage to wield a bow of True Ice. With her people's belief that she is the mythological hero Avarosa reincarnated, Ashe hopes to unify the Freljord once more by retaking their ancient, tribal lands.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg"
+        }
+    },
+    {
+        "name":"camille",
+        "title":"the steel shadow",
+        "alignment":"Piltover",
+        "role":["fighter"],
+        "stats":{
+            "HP":576,
+            "HP_perlevel":85,
+            
+            "HP_regen":8.5,
+            "HP_regen_perlevel":0.8,
+            
+            "MP":338.8,
+            "MP_perlevel":32,
+            
+            "MP_regrn":8.15,
+            "MP_regrn_perlevel":0.75,
+            
+            "Move_Speed":340,
+            
+            "ATK":68,
+            "ATK_perlevel":3.5,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":35,
+            "PHY_ARMOR_perlevel":3.8,
+
+            "MAG_ARMOR":32.1,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Weaponized to operate outside the boundaries of the law, Camille is the Principal Intelligencer of Clan Ferros—an elegant and elite agent who ensures the Piltover machine and its Zaunite underbelly runs smoothly. Adaptable and precise, she views sloppy technique as an embarrassment that must be put to order. With a mind as sharp as the blades she bears, Camille's pursuit of superiority through hextech body augmentation has left many to wonder if she is now more machine than woman.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg"
+        }
+    },
+    {
+        "name":"ahri",
+        "title":"the nine tailed fox",
+        "alignment":"Ionia",
+        "role":["mage"],
+        "stats":{
+            "HP":526,
+            "HP_perlevel":92,
+            
+            "HP_regen":6.5,
+            "HP_regen_perlevel":0.6,
+            
+            "MP":418,
+            "MP_perlevel":25,
+            
+            "MP_regrn":8,
+            "MP_regrn_perlevel":0.8,
+            
+            "Move_Speed":330,
+            
+            "ATK":53.04,
+            "ATK_perlevel":3,
+
+            "ATK_range":550,
+            
+            "PHY_ARMOR":20.88,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Innately connected to the latent power of Runeterra, Ahri is a vastaya who can reshape magic into orbs of raw energy. She revels in toying with her prey by manipulating their emotions before devouring their life essence. Despite her predatory nature, Ahri retains a sense of empathy as she receives flashes of memory from each soul she consumes.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
+        }
+    },
+    {
+        "name":"akali",
+        "title":"the rogue assassin",
+        "alignment":"Ionia",
+        "role":["assassin"],
+        "stats":{
+            "HP":575,
+            "HP_perlevel":95,
+            
+            "HP_regen":8,
+            "HP_regen_perlevel":0.5,
+            
+            "MP":200,
+            "MP_perlevel":0,
+            
+            "MP_regrn":50,
+            "MP_regrn_perlevel":0,
+            
+            "Move_Speed":345,
+            
+            "ATK":62.4,
+            "ATK_perlevel":3.3,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":23,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":37,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali now strikes alone, ready to be the deadly weapon her people need. Though she holds onto all she learned from her master Shen, she has pledged to defend Ionia from its enemies, one kill at a time. Akali may strike in silence, but her message will be heard loud and clear: fear the assassin with no master.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
+        }
+    },
+    {
+        "name":"ashe",
+        "title":"the frost archer",
+        "alignment":"Freljord",
+        "role":["marksman"],
+        "stats":{
+            "HP":539,
+            "HP_perlevel":85,
+            
+            "HP_regen":3.5,
+            "HP_regen_perlevel":0.55,
+            
+            "MP":280,
+            "MP_perlevel":32,
+            
+            "MP_regrn":6.972,
+            "MP_regrn_perlevel":0.4,
+            
+            "Move_Speed":325,
+            
+            "ATK":61,
+            "ATK_perlevel":2.96,
+
+            "ATK_range":600,
+            
+            "PHY_ARMOR":26,
+            "PHY_ARMOR_perlevel":3.4,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Iceborn warmother of the Avarosan tribe, Ashe commands the most populous horde in the north. Stoic, intelligent, and idealistic, yet uncomfortable with her role as leader, she taps into the ancestral magics of her lineage to wield a bow of True Ice. With her people's belief that she is the mythological hero Avarosa reincarnated, Ashe hopes to unify the Freljord once more by retaking their ancient, tribal lands.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg"
+        }
+    },
+    {
+        "name":"camille",
+        "title":"the steel shadow",
+        "alignment":"Piltover",
+        "role":["fighter"],
+        "stats":{
+            "HP":576,
+            "HP_perlevel":85,
+            
+            "HP_regen":8.5,
+            "HP_regen_perlevel":0.8,
+            
+            "MP":338.8,
+            "MP_perlevel":32,
+            
+            "MP_regrn":8.15,
+            "MP_regrn_perlevel":0.75,
+            
+            "Move_Speed":340,
+            
+            "ATK":68,
+            "ATK_perlevel":3.5,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":35,
+            "PHY_ARMOR_perlevel":3.8,
+
+            "MAG_ARMOR":32.1,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Weaponized to operate outside the boundaries of the law, Camille is the Principal Intelligencer of Clan Ferros—an elegant and elite agent who ensures the Piltover machine and its Zaunite underbelly runs smoothly. Adaptable and precise, she views sloppy technique as an embarrassment that must be put to order. With a mind as sharp as the blades she bears, Camille's pursuit of superiority through hextech body augmentation has left many to wonder if she is now more machine than woman.",
+        "imgae":{
+            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg"
+        }
+    }
+    
+    
+]

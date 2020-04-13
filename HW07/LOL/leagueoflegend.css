@@ -1,0 +1,61 @@
+@import url(//db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=BeaufortforLOL-Bold);
+
+        @font-face {
+            font-family: "BeaufortforLOL-Bold";
+            src: url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.eot");
+            src: url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.woff") format("woff"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.svg#BeaufortforLOL-Bold") format("svg");
+        }
+
+        .card-title {
+            margin-bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            padding: 12px;
+            transition-duration: 0.5s;
+        }
+
+        .hero_card {
+            height: 300px;
+            background-size: 275%;
+            background-position: 65%;
+            transition-duration: 0.3s;
+            border: initial;
+            border-radius: initial;
+        }
+
+        .hero_card:hover{
+            background-size: 265%;
+        }
+
+        .hero_card:hover .card-title{
+            background: rgb(20, 161, 226);
+        }
+
+        .card-img-overlay {
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+            font-style: italic;
+            font-family: "BeaufortforLOL-Bold";
+        }
+
+        .modal-content{
+            background-position: center;
+            background-position-y: top;
+            color:white;
+            font-family: "BeaufortforLOL-Bold";
+        }
+
+        .modal-header{
+            height: 300px;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .modal-header #Hero_Name{
+            font-size: 60px;
+        }
+
+        .modal-header #Hero_Title{
+            font-style: italic;
+        }
