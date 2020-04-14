@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../Modules/MyHelper.js"></script>
+</head>
+
+<body>
+    <select name="cities" id="cities">
+        <!-- <option value=""></option> -->
+    </select>
+
+    <select name="districts" id="districts">
+        <!-- <option value=""></option> -->
+    </select>
+    <button onclick=submitData()>Submit</button>
+
+    <!-- <select name="cities" id="cities">
+        <option value="">--choose City--</option>
+        <option value="taipei">Taipei</option>
+        <option value="taoyuan">Taoyuan</option>
+        <option value="taiching">Taiching</option>
+    </select>
+
+    <select name="districts" id="districts">
+        <option value="">--choose Districts--</option>
+        <option value="taipei01">ChungZheng</option>
+        <option value="taipei02">WuanWhuah</option>
+        <option value="taipei03">Hsinyi</option>
+    </select> -->
+    <script>
+        let TaiwanAddress = [];
+        let CityList = $g('#cities');
+        let DistList = $g('#districts');
+        let selected_city;
+        function fetchMaskJSON(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(text => {
+                    // console.log(typeof text);
+                    // console.log(text);
+                    analyzeData(text);
+                    initialize();
+                })
+                .catch(ex => {
+                    $g("body").innerHTML = ex;
+                })
+        }
+
+        function analyzeData(data) {
+            data.forEach(element => {
+                let CityInfo = {}
+                CityInfo.CityName = element.CityName;
+                CityInfo.Districts = [];
+                element.AreaList.forEach(item => {
+                    CityInfo.Districts.push({
+                        District: item.AreaName,
+                        ZipCode: item.ZipCode,
+                    })
+                })
+                TaiwanAddress.push(CityInfo);
+            });
+        }
+
+        function initialize(){
+            appendFirstOption(DistList,"請選擇行政區");
+            appendOption(TaiwanAddress,CityList,"CityName");
+            appendFirstOption(CityList,"請選擇城市");
+            setEvent();
+        }
+
+        function appendOption(array,list,str){
+            list.innerHTML = "";
+            array.forEach((element,index) => {
+                let _option = $c('option');
+                _option.value = (str == 'CityName')? index : element.ZipCode;
+                // debugger;
+                _option.innerHTML = element[str];
+                list.add(_option);
+            });
+        }
+
+        function appendFirstOption(list,str){
+            let _option = $c('option');
+            _option.value = "";
+            _option.innerHTML = str;
+            list.add(_option,0);
+            // list.selected = "";
+            _option.setAttribute('selected',"");
+        }
+
+        function setEvent(){
+            CityList.onchange = function(){
+                selected_city = CityList.selectedOptions[0].value;
+                appendOption(TaiwanAddress[selected_city].Districts,DistList,"District");
+            }
+            // CityList.addEventListener('change',changeCity());
+            // CityList.setAttribute('onchanged','changeCity()');
+            // let value = CityList.selectedOptions[0].value;
+        }
+
+        function submitData(){
+            let form = new FormData();
+            let city = CityList.selectedOptions[0].text;
+            let dist = DistList.selectedOptions[0].text;
+            // debugger;
+            form.append("City",city);
+            form.append("District",dist);
+
+            let xhr = new XMLHttpRequest();
+            let url = "http://127.0.0.1:5502/HW08/CityDropDownList/CityDropdown_SelectOptions.html";
+            xhr.open("POST",url);
+            xhr.send(formData);
+        }
+
+        window.onload = fetchMaskJSON("https://raw.githubusercontent.com/mizugakun/MyProfile/master/HW07/TaiwanAddress/TaiwanAddress.json");
+    </script>
+</body>
+
+
+</html>

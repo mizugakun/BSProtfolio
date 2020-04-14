@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../Modules/MyHelper.js"></script>
+</head>
+<body>
+    
+    <script>
+        const promise1 = new Promise(function(resolve, reject){
+            throw "Error 404"
+            setTimeout(() => {
+                resolve('Success')
+                },300);
+        });
+
+        promise1.then(function(value){
+            console.log(value);
+        }),function(ex){
+            console.log("error:"+ex);
+        }
+    </script>
+</body>
+</html>

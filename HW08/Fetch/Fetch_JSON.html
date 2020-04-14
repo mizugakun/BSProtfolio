@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../Modules/MyHelper.js"></script>
+</head>
+
+<body>
+    <div id="msg"></div>
+
+    <script>
+        function fetchMaskJSON(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(text=>{
+                    let test = $g("body>#msg");
+                    test.innerHTML = text;
+                })
+                .catch(ex=>{
+                    $g("body").innerHTML = ex;
+                })
+        }
+        window.onload = fetchMaskJSON("https://raw.githubusercontent.com/gene870607/gene870607-vs_code_javascript_HW/master/JavaScript/TaiwanAddress.json");
+    </script>
+</body>
+
+</html>

@@ -6,6 +6,9 @@
             src: url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.woff") format("woff"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/12420e8c141ca7c3dff41de2d59df13e.svg#BeaufortforLOL-Bold") format("svg");
         }
 
+        *{
+            text-transform: uppercase;
+        }
         .card-title {
             margin-bottom: 0;
             background: rgba(0, 0, 0, 0.4);
@@ -39,6 +42,10 @@
             font-family: "BeaufortforLOL-Bold";
         }
 
+        .card_grid{
+            margin: 20px 0;
+        }
+
         .modal-content{
             background-position: center;
             background-position-y: top;
@@ -58,4 +65,12 @@
 
         .modal-header #Hero_Title{
             font-style: italic;
+        }
+
+        .modal-footer{
+            justify-content: initial;
+        }
+
+        .modal-body{
+            background-color: rgba(0,0,0,0.3);
         }

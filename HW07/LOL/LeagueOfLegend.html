@@ -2,93 +2,162 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link href="//db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=BeaufortforLOL-Bold" rel="stylesheet"
-        type="text/css" />
+  <link href="//db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=BeaufortforLOL-Bold" rel="stylesheet"
+    type="text/css" />
 
-    <link rel="stylesheet" href="../LOL/leagueoflegend.css">
+  <link rel="stylesheet" href="../LOL/leagueoflegend.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-        </script>
-    
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-6 col-md-4 col-xl-3">
-                <div type="button" class="card text-white hero_card"
-                    style="background-image: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg);">
-                    <!-- <img src="" class="card-img" alt="..."> -->
-                    <div class="card-img-overlay">
-                        <h4 class="card-title">AHRI</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-          
-          <!-- Modal -->
-          <div class="modal fade" id="HeroModal" tabindex="-1" role="dialog" aria-labelledby="Hero_Name" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content"
-                    style="background-image: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg);">
-                <div class="modal-header">
-                  <h4 id="Hero_Name">AHRI</h4>
-                  <h4 id="Hero_Title">The Nine Tailed FOX</h4>
-                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button> -->
-                </div>
-                <div class="modal-body">
-                  
-                  <ul>
-                    <h5>STATUS</h5>
-                    <li>HP</li>
-                    <li>HP generation</li>
-                    <li>MP</li>
-                    <li>MP generation</li>
-                    <li>Move Speed</li>
-                    <li>Attack</li>
-                    <li>Physical Armor</li>
-                    <li>Magical Armor</li>
-                  </ul>
-                </div>
-                <div class="modal-footer">
-                    <h5>STORY</h5>
-                    <p></p>
-                </div>
-              </div>
+  <div class="container">
+    <div class="row hero_append_area">
+
+
+      <template id="hero_card_temp">
+        <div class="col-6 col-md-4 col-xl-3 card_grid">
+          <div type="button" class="card text-white hero_card"
+            style="background-image: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg);">
+            <div class="card-img-overlay">
+              <h4 class="card-title">AHRI</h4>
             </div>
           </div>
+        </div>
+      </template>
+
+<!-- 
+      <div class="col-6 col-md-4 col-xl-3">
+        <div type="button" class="card text-white hero_card"
+          style="background-image: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg);">
+          <div class="card-img-overlay">
+            <h4 class="card-title">AHRI</h4>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="HeroModal" tabindex="-1" role="dialog" aria-labelledby="Hero_Name" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content"
+          style="background-image: url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg);">
+          <div class="modal-header">
+            <h4 id="Hero_Name">AHRI</h4>
+            <h4 id="Hero_Title">The Nine Tailed FOX</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+          </div>
+          <div class="modal-body">
+            <ul>
+              <h5>STATUS</h5>
+              <li id="HP">HP</li>
+              <li id="HPre">HP generation</li>
+              <li id="MP">MP</li>
+              <li id="MPre">MP generation</li>
+              <li id="Speed">Move Speed</li>
+              <li id="Atk">Attack</li>
+              <li id="Atk_">Attack Range</li>
+              <li id="PsyArm">Physical Armor</li>
+              <li id="MagArm">Magical Armor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <script>
+    let heros = [];
 
-    <script>
-        let card = $('.hero_card')[0];
-        card.addEventListener('click',function(){
-          $('#HeroModal').modal('show')
+    $.ajax({
+      type: "Get",
+      url: 'http://127.0.0.1:5502/HW07/LOL/hero.json',
+      success: function (response) {
+        heros = response;
+        appendHeros();
+      }
+    })
+
+    function appendHeros() {
+      let hero_row = $('.hero_append_area')[0];
+      let fragment = new DocumentFragment();
+      let template = $('#hero_card_temp')[0];
+      heros.forEach((element,index) => {
+        let cloneNode = template.content.cloneNode(true);
+        cloneNode.querySelector('.card-title').innerHTML = element.name;
+        let card = cloneNode.querySelector('.hero_card');
+        card.setAttribute('style', `background-image: url(${element.image.src}); background-position: ${element.image.pivot}%;`)
+        card.setAttribute('id',`${index}`)                                    
+        card.setAttribute('onclick','showModal(this)')
+        fragment.appendChild(cloneNode);
+      });
+      hero_row.appendChild(fragment);
+      // card.addEventListener('click', function (index) {
+      //     $('#HeroModal').modal('show')
+      //   })
+    }
+
+    function showModal(btn){
+        editHeroInfo(heros[btn.id]);
+        $('#HeroModal').modal('show');
+      }
+
+    function editHeroInfo(heroInfo){
+      $('#Hero_Name').html(heroInfo.name);
+      $('#Hero_Title').html(heroInfo.title)
+      $('.modal-content').attr('style',`background-image: url(${heroInfo.image.src})`);
+
+
+        let statsList = document.querySelector('.modal-body>ul');
+        let listItem = [9];
+        listItem[0] = `HP:${heroInfo.stats.HP} (+${heroInfo.stats.HP_perlevel} per level)`;
+        listItem[1] = `HP regeneration:${heroInfo.stats.HP_regen} (+${heroInfo.stats.HP_regen_perlevel} per level)`;
+        listItem[2] = `MP:${heroInfo.stats.MP} (+${heroInfo.stats.MP_perlevel} per level)`;
+        listItem[3] = `MP regeneration:${heroInfo.stats.MP_regen} (+${heroInfo.stats.MP_regen_perlevel} per level)`;
+        listItem[4] = `Speed:${heroInfo.stats.Move_Speed}`;
+        listItem[5] = `Attack:${heroInfo.stats.ATK} (+${heroInfo.stats.ATK_perlevel} per level)`;
+        listItem[5] = `Attack Range:${heroInfo.stats.ATK_range}`
+        listItem[7] = `Physical Armor:${heroInfo.stats.PHY_ARMOR} (+${heroInfo.stats.PHY_ARMOR_perlevel} per level)`;
+        listItem[8] = `Magicla Armor:${heroInfo.stats.MAG_ARMOR} (+${heroInfo.stats.MAG_ARMOR_perlevel} per level)`;
+        statsList.innerHTML = "";
+        
+        let fragment = new DocumentFragment();
+        listItem.forEach(element =>{
+          let _li = document.createElement('li');
+          _li.innerHTML = element;
+          debugger;
+          fragment.appendChild(_li);
         })
-    </script>
+        debugger;
+        statsList.appendChild(fragment);
+        debugger;
+
+    }
+  </script>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

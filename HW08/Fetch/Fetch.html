@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../Modules/MyHelper.js"></script>
+</head>
+
+<body>
+    <div id="msg"></div>
+
+    <script>
+        function fetchMaskJSON(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(text=>{
+                    $g("body").innerHTML = text;
+                })
+                .catch(ex=>{
+                    $g("body").innerHTML = ex;
+                })
+        }
+        window.onload = fetchMaskJSON("https://www.msn.com/zh-tw");
+    </script>
+</body>
+
+</html>

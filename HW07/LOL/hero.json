@@ -31,8 +31,9 @@
             "MAG_ARMOR_perlevel":0.5
         },
         "story":"Innately connected to the latent power of Runeterra, Ahri is a vastaya who can reshape magic into orbs of raw energy. She revels in toying with her prey by manipulating their emotions before devouring their life essence. Despite her predatory nature, Ahri retains a sense of empathy as she receives flashes of memory from each soul she consumes.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
+            "pivot":65
         }
     },
     {
@@ -50,8 +51,8 @@
             "MP":200,
             "MP_perlevel":0,
             
-            "MP_regrn":50,
-            "MP_regrn_perlevel":0,
+            "MP_regen":50,
+            "MP_regen_perlevel":0,
             
             "Move_Speed":345,
             
@@ -67,8 +68,9 @@
             "MAG_ARMOR_perlevel":1.25
         },
         "story":"Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali now strikes alone, ready to be the deadly weapon her people need. Though she holds onto all she learned from her master Shen, she has pledged to defend Ionia from its enemies, one kill at a time. Akali may strike in silence, but her message will be heard loud and clear: fear the assassin with no master.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg",
+            "pivot":48
         }
     },
     {
@@ -86,8 +88,8 @@
             "MP":280,
             "MP_perlevel":32,
             
-            "MP_regrn":6.972,
-            "MP_regrn_perlevel":0.4,
+            "MP_regen":6.972,
+            "MP_regen_perlevel":0.4,
             
             "Move_Speed":325,
             
@@ -103,8 +105,9 @@
             "MAG_ARMOR_perlevel":0.5
         },
         "story":"Iceborn warmother of the Avarosan tribe, Ashe commands the most populous horde in the north. Stoic, intelligent, and idealistic, yet uncomfortable with her role as leader, she taps into the ancestral magics of her lineage to wield a bow of True Ice. With her people's belief that she is the mythological hero Avarosa reincarnated, Ashe hopes to unify the Freljord once more by retaking their ancient, tribal lands.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg"
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg",
+            "pivot":73
         }
     },
     {
@@ -122,8 +125,8 @@
             "MP":338.8,
             "MP_perlevel":32,
             
-            "MP_regrn":8.15,
-            "MP_regrn_perlevel":0.75,
+            "MP_regen":8.15,
+            "MP_regen_perlevel":0.75,
             
             "Move_Speed":340,
             
@@ -139,154 +142,604 @@
             "MAG_ARMOR_perlevel":1.25
         },
         "story":"Weaponized to operate outside the boundaries of the law, Camille is the Principal Intelligencer of Clan Ferros—an elegant and elite agent who ensures the Piltover machine and its Zaunite underbelly runs smoothly. Adaptable and precise, she views sloppy technique as an embarrassment that must be put to order. With a mind as sharp as the blades she bears, Camille's pursuit of superiority through hextech body augmentation has left many to wonder if she is now more machine than woman.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg"
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg",
+            "pivot":90
         }
     },
     {
-        "name":"ahri",
-        "title":"the nine tailed fox",
-        "alignment":"Ionia",
+        "name":"JANNA",
+        "title":"THE STORM'S FURY",
+        "alignment":"Zaun",
+        "role":["SUPPORT"],
+        "stats":{
+            "HP":500,
+            "HP_perlevel":70,
+            
+            "HP_regen":5.5,
+            "HP_regen_perlevel":0.55,
+            
+            "MP":350,
+            "MP_perlevel":64,
+            
+            "MP_regen":11.5,
+            "MP_regen_perlevel":0.4,
+            
+            "Move_Speed":315,
+            
+            "ATK":46,
+            "ATK_perlevel":1.5,
+
+            "ATK_range":550,
+            
+            "PHY_ARMOR":28,
+            "PHY_ARMOR_perlevel":3.8,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Armed with the power of Runeterra's gales, Janna is a mysterious, elemental wind spirit who protects the dispossessed of Zaun. Some believe she was brought into existence by the pleas of Runeterra's sailors who prayed for fair winds as they navigated treacherous waters and braved rough tempests. Her favor and protection has since been called into the depths of Zaun, where Janna has become a beacon of hope to those in need. No one knows where or when she will appear, but more often than not, she's come to help.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Janna_0.jpg",
+            "pivot":90
+        }
+    },
+    {
+        "name":"JINX",
+        "title":"THE LOOSE CANNON",
+        "alignment":"Zaun",
+        "role":["Marksman"],
+        "stats":{
+            "HP":581,
+            "HP_perlevel":84,
+            
+            "HP_regen":3.75,
+            "HP_regen_perlevel":0.5,
+            
+            "MP":245,
+            "MP_perlevel":45,
+            
+            "MP_regen":6.7,
+            "MP_regen_perlevel":1,
+            
+            "Move_Speed":325,
+            
+            "ATK":57,
+            "ATK_perlevel":3.4,
+
+            "ATK_range":525,
+            
+            "PHY_ARMOR":28,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"A manic and impulsive criminal from Zaun, Jinx lives to wreak havoc without care for the consequences. With an arsenal of deadly weapons, she unleashes the loudest blasts and brightest explosions to leave a trail of mayhem and panic in her wake. Jinx despises boredom, and gleefully brings her own chaotic brand of pandemonium wherever she goes.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg",
+            "pivot":80
+        }
+    },
+    {
+        "name":"KAI'SA",
+        "title":"DAUGHTER OF THE VOID",
+        "alignment":"Noxian",
+        "role":["Marksman"],
+        "stats":{
+            "HP":571,
+            "HP_perlevel":86,
+            
+            "HP_regen":3.5,
+            "HP_regen_perlevel":0.55,
+            
+            "MP":344.88,
+            "MP_perlevel":38,
+            
+            "MP_regen":8.2,
+            "MP_regen_perlevel":0.45,
+            
+            "Move_Speed":335,
+            
+            "ATK":59,
+            "ATK_perlevel":1.7,
+
+            "ATK_range":525,
+            
+            "PHY_ARMOR":28,
+            "PHY_ARMOR_perlevel":3,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Claimed by the Void when she was only a child, Kai'Sa managed to survive through sheer tenacity and strength of will. Her experiences have made her a deadly hunter and, to some, the harbinger of a future they would rather not live to see. Having entered into an uneasy symbiosis with a living Void carapace, the time will soon come when she must decide whether to forgive those mortals who would call her a monster, and defeat the coming darkness together… or simply to forget, as the Void consumes the world that left her behind.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kaisa_0.jpg",
+            "pivot":40
+        }
+    },
+    {
+        "name":"KATARINA",
+        "title":"THE SINISTER BLADE",
+        "alignment":"Noxian",
+        "role":["assassin"],
+        "stats":{
+            "HP":602,
+            "HP_perlevel":94,
+            
+            "HP_regen":7.5,
+            "HP_regen_perlevel":0.7,
+            
+            "MP":0,
+            "MP_perlevel":0,
+            
+            "MP_regen":0,
+            "MP_regen_perlevel":0,
+            
+            "Move_Speed":340,
+            
+            "ATK":58,
+            "ATK_perlevel":3.2,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":27.88,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":32.1,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Katarina_0.jpg",
+            "pivot":70
+        }
+    },
+    {
+        "name":"LUX",
+        "title":"THE LADY OF LUMINOSITY",
+        "alignment":"Demacia",
         "role":["mage"],
         "stats":{
-            "HP":526,
-            "HP_perlevel":92,
+            "HP":490,
+            "HP_perlevel":85,
             
-            "HP_regen":6.5,
-            "HP_regen_perlevel":0.6,
+            "HP_regen":5.5,
+            "HP_regen_perlevel":0.55,
             
-            "MP":418,
-            "MP_perlevel":25,
+            "MP":480,
+            "MP_perlevel":23.5,
             
-            "MP_regrn":8,
-            "MP_regrn_perlevel":0.8,
+            "MP_regen":8,
+            "MP_regen_perlevel":0.8,
             
             "Move_Speed":330,
             
-            "ATK":53.04,
+            "ATK":53.54,
+            "ATK_perlevel":3.3,
+
+            "ATK_range":550,
+            
+            "PHY_ARMOR":18.72,
+            "PHY_ARMOR_perlevel":4,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Luxanna Crownguard hails from Demacia, an insular realm where magical abilities are viewed with fear and suspicion. Able to bend light to her will, she grew up dreading discovery and exile, and was forced to keep her power secret, in order to preserve her family's noble status. Nonetheless, Lux's optimism and resilience have led her to embrace her unique talents, and she now covertly wields them in service of her homeland.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg",
+            "pivot":70
+        }
+    },
+    {
+        "name":"POPPY",
+        "title":"KEEPER OF THE HAMMER",
+        "alignment":"Bandle City",
+        "role":["tank"],
+        "stats":{
+            "HP":540,
+            "HP_perlevel":90,
+            
+            "HP_regen":8,
+            "HP_regen_perlevel":0.8,
+            
+            "MP":280,
+            "MP_perlevel":40,
+            
+            "MP_regen":7,
+            "MP_regen_perlevel":0.7,
+            
+            "Move_Speed":345,
+            
+            "ATK":64,
+            "ATK_perlevel":4,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":38,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":32,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Runeterra has no shortage of valiant champions, but few are as tenacious as Poppy. Bearing the legendary hammer of Orlon, a weapon twice her size, this determined yordle has spent untold years searching in secret for the fabled “Hero of Demacia,” said to be its rightful wielder. Until then, she dutifully charges into battle, pushing back the kingdom's enemies with every whirling strike.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Poppy_0.jpg",
+            "pivot":70
+        }
+    },
+    {
+        "name":"TRISTANA",
+        "title":"THE YORDLE GUNNER",
+        "alignment":"Bandle City",
+        "role":["marksman"],
+        "stats":{
+            "HP":559,
+            "HP_perlevel":88,
+            
+            "HP_regen":3.75,
+            "HP_regen_perlevel":0.65,
+            
+            "MP":250,
+            "MP_perlevel":32,
+            
+            "MP_regen":7.2,
+            "MP_regen_perlevel":0.45,
+            
+            "Move_Speed":325,
+            
+            "ATK":61,
+            "ATK_perlevel":3.3,
+
+            "ATK_range":525,
+            
+            "PHY_ARMOR":26,
+            "PHY_ARMOR_perlevel":3,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"While many other yordles channel their energy into discovery, invention, or just plain mischief-making, Tristana was always inspired by the adventures of great warriors. She had heard much about Runeterra, its factions, and its wars, and believed her kind could become worthy of legend too. Setting foot in the world for the first time, she took up her trusty cannon Boomer, and now leaps into battle with steadfast courage and optimism.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Tristana_0.jpg",
+            "pivot":70
+        }
+    },
+    {
+        "name":"RIVEN",
+        "title":"THE EXILE",
+        "alignment":"Noxian",
+        "role":["FIGHTER"],
+        "stats":{
+            "HP":560,
+            "HP_perlevel":86,
+            
+            "HP_regen":8.5,
+            "HP_regen_perlevel":0.5,
+            
+            "MP":0,
+            "MP_perlevel":0,
+            
+            "MP_regen":0,
+            "MP_regen_perlevel":0,
+            
+            "Move_Speed":340,
+            
+            "ATK":64,
+            "ATK_perlevel":3,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":33,
+            "PHY_ARMOR_perlevel":3.2,
+
+            "MAG_ARMOR":32.1,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Once a swordmaster in the warhosts of Noxus, Riven is an expatriate in a land she previously tried to conquer. She rose through the ranks on the strength of her conviction and brutal efficiency, and was rewarded with a legendary runic blade and a warband of her own. However, on the Ionian front, Riven's faith in her homeland was tested and ultimately broken. Having severed all ties to the empire, she now seeks to find her place in a shattered world, even as rumors abound that Noxus itself has been reforged...",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Riven_0.jpg",
+            "pivot":78
+        }
+    },
+    {
+        "name":"VI",
+        "title":"THE POLICE",
+        "alignment":"Zaun",
+        "role":["FIGHTER"],
+        "stats":{
+            "HP":585,
+            "HP_perlevel":85,
+            
+            "HP_regen":10,
+            "HP_regen_perlevel":1,
+            
+            "MP":295,
+            "MP_perlevel":45,
+            
+            "MP_regen":8,
+            "MP_regen_perlevel":0.5,
+            
+            "Move_Speed":340,
+            
+            "ATK":63,
+            "ATK_perlevel":3.5,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":30,
+            "PHY_ARMOR_perlevel":4,
+
+            "MAG_ARMOR":32.1,
+            "MAG_ARMOR_perlevel":1.25
+        },
+        "story":"Once a criminal from the mean streets of Zaun, Vi is a hotheaded, impulsive, and fearsome woman with only a very loose respect for authority figures. Growing up all but alone, Vi developed finely honed survival instincts as well as a wickedly abrasive sense of humor. Now working with the Wardens of Piltover to keep the peace, she wields mighty hextech gauntlets that can punch through walls and suspects with equal ease.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Vi_0.jpg",
+            "pivot":78
+        }
+    },
+    {
+        "name":"SONA",
+        "title":"MAVEN OF THE STRINGS",
+        "alignment":"Demacia",
+        "role":["surpport"],
+        "stats":{
+            "HP":482.36,
+            "HP_perlevel":77,
+            
+            "HP_regen":5.5,
+            "HP_regen_perlevel":0.55,
+            
+            "MP":340.6,
+            "MP_perlevel":45,
+            
+            "MP_regen":11.5,
+            "MP_regen_perlevel":0.4,
+            
+            "Move_Speed":325,
+            
+            "ATK":49,
             "ATK_perlevel":3,
 
             "ATK_range":550,
             
-            "PHY_ARMOR":20.88,
-            "PHY_ARMOR_perlevel":3.5,
+            "PHY_ARMOR":28,
+            "PHY_ARMOR_perlevel":3.3,
 
             "MAG_ARMOR":30,
             "MAG_ARMOR_perlevel":0.5
         },
-        "story":"Innately connected to the latent power of Runeterra, Ahri is a vastaya who can reshape magic into orbs of raw energy. She revels in toying with her prey by manipulating their emotions before devouring their life essence. Despite her predatory nature, Ahri retains a sense of empathy as she receives flashes of memory from each soul she consumes.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
+        "story":"Sona is Demacia's foremost virtuoso of the stringed etwahl, speaking only through her graceful chords and vibrant arias. This genteel manner has endeared her to the highborn, though others suspect her spellbinding melodies to actually emanate magic—a Demacian taboo. Silent to outsiders but somehow understood by close companions, Sona plucks her harmonies not only to soothe injured allies, but also to strike down unsuspecting enemies.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sona_0.jpg",
+            "pivot":80
         }
     },
     {
-        "name":"akali",
-        "title":"the rogue assassin",
-        "alignment":"Ionia",
-        "role":["assassin"],
+        "name":"CAITLYN",
+        "title":"THE SHERIFF OF PILTOVER",
+        "alignment":"piltover",
+        "role":["MARKSMAN"],
         "stats":{
-            "HP":575,
-            "HP_perlevel":95,
-            
-            "HP_regen":8,
-            "HP_regen_perlevel":0.5,
-            
-            "MP":200,
-            "MP_perlevel":0,
-            
-            "MP_regrn":50,
-            "MP_regrn_perlevel":0,
-            
-            "Move_Speed":345,
-            
-            "ATK":62.4,
-            "ATK_perlevel":3.3,
-
-            "ATK_range":125,
-            
-            "PHY_ARMOR":23,
-            "PHY_ARMOR_perlevel":3.5,
-
-            "MAG_ARMOR":37,
-            "MAG_ARMOR_perlevel":1.25
-        },
-        "story":"Abandoning the Kinkou Order and her title of the Fist of Shadow, Akali now strikes alone, ready to be the deadly weapon her people need. Though she holds onto all she learned from her master Shen, she has pledged to defend Ionia from its enemies, one kill at a time. Akali may strike in silence, but her message will be heard loud and clear: fear the assassin with no master.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg"
-        }
-    },
-    {
-        "name":"ashe",
-        "title":"the frost archer",
-        "alignment":"Freljord",
-        "role":["marksman"],
-        "stats":{
-            "HP":539,
-            "HP_perlevel":85,
+            "HP":481,
+            "HP_perlevel":91,
             
             "HP_regen":3.5,
             "HP_regen_perlevel":0.55,
             
-            "MP":280,
-            "MP_perlevel":32,
+            "MP":313.7,
+            "MP_perlevel":35,
             
-            "MP_regrn":6.972,
-            "MP_regrn_perlevel":0.4,
+            "MP_regen":7.4,
+            "MP_regen_perlevel":0.55,
             
             "Move_Speed":325,
             
-            "ATK":61,
-            "ATK_perlevel":2.96,
+            "ATK":62,
+            "ATK_perlevel":2.88,
 
-            "ATK_range":600,
+            "ATK_range":650,
             
-            "PHY_ARMOR":26,
-            "PHY_ARMOR_perlevel":3.4,
+            "PHY_ARMOR":28,
+            "PHY_ARMOR_perlevel":3.5,
 
             "MAG_ARMOR":30,
             "MAG_ARMOR_perlevel":0.5
         },
-        "story":"Iceborn warmother of the Avarosan tribe, Ashe commands the most populous horde in the north. Stoic, intelligent, and idealistic, yet uncomfortable with her role as leader, she taps into the ancestral magics of her lineage to wield a bow of True Ice. With her people's belief that she is the mythological hero Avarosa reincarnated, Ashe hopes to unify the Freljord once more by retaking their ancient, tribal lands.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ashe_0.jpg"
+        "story":"Renowned as its finest peacekeeper, Caitlyn is also Piltover's best shot at ridding the city of its elusive criminal elements. She is often paired with Vi, acting as a cool counterpoint to her partner's more impetuous nature. Even though she carries a one-of-a-kind hextech rifle, Caitlyn's most powerful weapon is her superior intellect, allowing her to lay elaborate traps for any lawbreakers foolish enough to operate in the City of Progress.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_0.jpg",
+            "pivot":90
         }
     },
     {
-        "name":"camille",
-        "title":"the steel shadow",
-        "alignment":"Piltover",
-        "role":["fighter"],
+        "name":"ANNIE",
+        "title":"THE DARK CHILD",
+        "alignment":"",
+        "role":["mage"],
         "stats":{
-            "HP":576,
+            "HP":524,
+            "HP_perlevel":88,
+            
+            "HP_regen":5.5,
+            "HP_regen_perlevel":0.55,
+            
+            "MP":418,
+            "MP_perlevel":25,
+            
+            "MP_regen":8,
+            "MP_regen_perlevel":0.8,
+            
+            "Move_Speed":335,
+            
+            "ATK":50.41,
+            "ATK_perlevel":2.625,
+
+            "ATK_range":625,
+            
+            "PHY_ARMOR":19.22,
+            "PHY_ARMOR_perlevel":4,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Dangerous, yet disarmingly precocious, Annie is a child mage with immense pyromantic power. Even in the shadows of the mountains north of Noxus, she is a magical outlier. Her natural affinity for fire manifested early in life through unpredictable, emotional outbursts, though she eventually learned to control these “playful tricks.” Her favorite includes the summoning of her beloved teddy bear, Tibbers, as a fiery protector. Lost in the perpetual innocence of childhood, Annie wanders the dark forests, always looking for someone to play with.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Annie_0.jpg",
+            "pivot":90
+        }
+    },
+    {
+        "name":"KAYLE",
+        "title":"THE RIGHTEOUS",
+        "alignment":"Demacia",
+        "role":["FIGHTER"],
+        "stats":{
+            "HP":600,
             "HP_perlevel":85,
             
+            "HP_regen":5,
+            "HP_regen_perlevel":0.5,
+            
+            "MP":300,
+            "MP_perlevel":50,
+            
+            "MP_regen":8,
+            "MP_regen_perlevel":0.8,
+            
+            "Move_Speed":335,
+            
+            "ATK":50,
+            "ATK_perlevel":2.5,
+
+            "ATK_range":175,
+            
+            "PHY_ARMOR":26,
+            "PHY_ARMOR_perlevel":3,
+
+            "MAG_ARMOR":34,
+            "MAG_ARMOR_perlevel":0.5
+        },
+        "story":"Born to a Targonian Aspect at the height of the Rune Wars, Kayle honored her mother's legacy by fighting for justice on wings of divine flame. She and her twin sister Morgana were the protectors of Demacia for many years—until Kayle became disillusioned with the repeated failings of mortals, and abandoned this realm altogether. Still, legends are told of her punishing the unjust with her fiery swords, and many hope that she will one day return…",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kayle_2.jpg",
+            "pivot":45
+        }
+    },
+    {
+        "name":"LEONA",
+        "title":"THE RADIANT DAWN",
+        "alignment":"mount-targon",
+        "role":["TANK"],
+        "stats":{
+            "HP":576.16,
+            "HP_perlevel":87,
+            
             "HP_regen":8.5,
-            "HP_regen_perlevel":0.8,
+            "HP_regen_perlevel":0.85,
             
-            "MP":338.8,
-            "MP_perlevel":32,
+            "MP":302.2,
+            "MP_perlevel":40,
             
-            "MP_regrn":8.15,
-            "MP_regrn_perlevel":0.75,
+            "MP_regen":6,
+            "MP_regen_perlevel":0.8,
             
-            "Move_Speed":340,
+            "Move_Speed":335,
             
-            "ATK":68,
-            "ATK_perlevel":3.5,
+            "ATK":60.04,
+            "ATK_perlevel":3,
 
             "ATK_range":125,
             
-            "PHY_ARMOR":35,
-            "PHY_ARMOR_perlevel":3.8,
+            "PHY_ARMOR":47,
+            "PHY_ARMOR_perlevel":3.6,
 
             "MAG_ARMOR":32.1,
             "MAG_ARMOR_perlevel":1.25
-        },
-        "story":"Weaponized to operate outside the boundaries of the law, Camille is the Principal Intelligencer of Clan Ferros—an elegant and elite agent who ensures the Piltover machine and its Zaunite underbelly runs smoothly. Adaptable and precise, she views sloppy technique as an embarrassment that must be put to order. With a mind as sharp as the blades she bears, Camille's pursuit of superiority through hextech body augmentation has left many to wonder if she is now more machine than woman.",
-        "imgae":{
-            "src1":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Camille_0.jpg"
+       },
+        "story":"Imbued with the fire of the sun, Leona is a holy warrior of the Solari who defends Mount Targon with her Zenith Blade and the Shield of Daybreak. Her skin shimmers with starfire while her eyes burn with the power of the celestial Aspect within her. Armored in gold and bearing a terrible burden of ancient knowledge, Leona brings enlightenment to some, death to others.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Leona_10.jpg",
+            "pivot":50
+        }
+    },
+    {
+        "name":"EVELYNN",
+        "title":"AGONY'S EMBRACE",
+        "alignment":"shadow-isles",
+        "role":["ASSASSIN"],
+        "stats":{
+            "HP":572,
+            "HP_perlevel":84,
+            
+            "HP_regen":8.5,
+            "HP_regen_perlevel":0.75,
+            
+            "MP":315.6,
+            "MP_perlevel":42,
+            
+            "MP_regen":8.108,
+            "MP_regen_perlevel":0.6,
+            
+            "Move_Speed":335,
+            
+            "ATK":61,
+            "ATK_perlevel":3,
+
+            "ATK_range":125,
+            
+            "PHY_ARMOR":37,
+            "PHY_ARMOR_perlevel":3.5,
+
+            "MAG_ARMOR":32.1,
+            "MAG_ARMOR_perlevel":1.25
+       },
+        "story":"Within the dark seams of Runeterra, the demon Evelynn searches for her next victim. She lures in prey with the voluptuous façade of a human female, but once a person succumbs to her charms, Evelynn's true form is unleashed. She then subjects her victim to unspeakable torment, gratifying herself with their pain. To the demon, these liaisons are innocent flings. To the rest of Runeterra, they are ghoulish tales of lust gone awry and horrific reminders of the cost of wanton desire.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Evelynn_0.jpg",
+            "pivot":50
+        }
+    },
+    {
+        "name":"LULU",
+        "title":"THE FAE SORCERESS",
+        "alignment":"Bandle City",
+        "role":["SUPPORT"],
+        "stats":{
+            "HP":525,
+            "HP_perlevel":74,
+            
+            "HP_regen":6,
+            "HP_regen_perlevel":0.6,
+            
+            "MP":350,
+            "MP_perlevel":55,
+            
+            "MP_regen":11,
+            "MP_regen_perlevel":0.6,
+            
+            "Move_Speed":330,
+            
+            "ATK":47,
+            "ATK_perlevel":2.6,
+
+            "ATK_range":550,
+            
+            "PHY_ARMOR":29,
+            "PHY_ARMOR_perlevel":3.7,
+
+            "MAG_ARMOR":30,
+            "MAG_ARMOR_perlevel":0.5
+       },
+        "story":"The yordle mage Lulu is known for conjuring dreamlike illusions and fanciful creatures as she roams Runeterra with her fairy companion Pix. Lulu shapes reality on a whim, warping the fabric of the world, and what she views as the constraints of this mundane, physical realm. While others might consider her magic at best unnatural, and at worst dangerous, she believes everyone could use a touch of enchantment.",
+        "image":{
+            "src":"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lulu_0.jpg",
+            "pivot":80
         }
     }
+
     
-    
+       
 ]
