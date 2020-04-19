@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="puzzle_new.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <div class="container panel">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col select_area">
+                <select selected="2" id=difficulty_selector>
+                    <option value="2">Rooky(2x2)</option>
+                    <option value="3">Easy(3x3)</option>
+                    <option value="4">Normal(4x4)</option>
+                    <option value="5">Hard(5x5)</option>
+                </select>
+                <button id="gameStart">randomize</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 id="win_content">You Win!!</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let empty_block = -1;
+        let moveArray = [0, 1, 0, -1, 0];
+        let orderArray = [];
+        let panelSize = 2;
+        let animateSpeed = 10;
+        let ifPressBlock = false;
+        window.onload = initialize();
+
+        function initialize() {
+            generateBlocks();
+            setPanelEvent();
+            setSelectionEvent();
+            setStartEvent();
+        }
+
+        function generateBlocks() {
+            clearWin();
+            let panel = $('.panel');
+            panel.html('');
+            orderArray = [];
+            let row = $('<div></div>').attr('class', 'row').appendTo(panel);
+            for (let j = 0; j < panelSize * panelSize; j++) {
+                let col = $('<div></div>').attr('id', `_${j}`).attr('class', 'button').css('width', `${480 / panelSize}px`).css('height', `${480 / panelSize}px`).css('order', j).appendTo(row);
+                let img = $('<img>').attr('src', 'https://picsum.photos/480/480/?random=1')
+                    .css('margin-top', -480 * Math.floor(j / panelSize) / panelSize)
+                    .css('margin-left', -480 * (j % panelSize) / panelSize)
+                    .appendTo(col);
+                orderArray.push(document.querySelector(`#_${j}`));
+            }
+            empty_block = document.querySelector(`#_${panelSize * panelSize - 1}`);
+            $(`.row>#_${panelSize * panelSize - 1}`).html('');
+        }
+
+        function setPanelEvent() {
+            let t = $('.button');
+            for (let i = 0; i < t.length; i++) {
+                t[i].addEventListener('click', pressBlock)
+            }
+        }
+
+        function clearWin() {
+            $('#win_content').html("");
+        }
+
+        function setSelectionEvent() {
+            document.querySelector('#difficulty_selector').addEventListener('change', changeDifficulty);
+        }
+
+        function setStartEvent() {
+            $('#gameStart').click(randomizeBlocks);
+        }
+
+        function randomizeBlocks() {
+
+            let i = 0
+            let id = setInterval(frame, 20);
+            animateSpeed = 120;
+            function frame() {
+                if (i >= refreshTime()) {
+                    clearInterval(id);
+                    animateSpeed = 10;
+                    return;
+                } else {
+                    randomize();    
+                    i++;
+                }
+            }
+        }
+
+        function refreshTime() {
+            switch (panelSize) {
+                case 2:
+                    return 50;
+                case 3:
+                    return 20;
+                case 4:
+                    return 200;
+                case 5:
+                    return 200;
+            }
+        }
+
+        function randomize() {
+            let count = 0;
+
+            // while (count < 10) {
+            let r = parseInt(Math.random() * 4);
+            let pos = getRowCol(orderArray.indexOf(empty_block));
+            let distance = getDistance(r, pos);
+            if (distance == 0) return;
+            for (let i = 0; i < parseInt(Math.random() * (distance) + 1); i++) {
+                let order = (pos[0] + moveArray[r]) * panelSize + pos[1] + moveArray[r + 1];
+                let btn = orderArray[order];
+                // moveBlock(btn);
+                showMove(btn);
+                // }
+                // count++;
+            }
+
+            // return new Promise(resolve => resolve(true));
+        }
+        function getDistance(direction, position) {
+            switch (direction) {
+                case 0:
+                    //move right
+                    if (position[1] == panelSize - 1) return 0;
+                    return panelSize - position[1] - 1;
+                    break;
+                case 1:
+                    //move down
+                    if (position[0] == panelSize - 1) return 0;
+                    return panelSize - position[0] - 1;
+                    break;
+                case 2:
+                    //move left
+                    if (position[1] == 0) return 0;
+                    return position[1];
+                    break;
+                case 3:
+                    //move up
+                    if (position[0] == 0) return 0;
+                    return position[0];
+                    break;
+            }
+        }
+
+        function changeDifficulty() {
+            panelSize = parseInt(document.querySelector('#difficulty_selector').selectedOptions[0].value);
+            generateBlocks();
+            setPanelEvent();
+        }
+
+        async function pressBlock() {
+            ifPressBlock = !ifPressBlock;
+            let btn = this
+            let pos = orderArray.indexOf(btn);
+            let pos_white = orderArray.indexOf(empty_block);
+            if (nearWhite(pos, pos_white)) {
+                showMove(btn);
+            }
+        }
+
+        function nearWhite(order, white_order) {
+            let pos = getRowCol(order);
+            let white = getRowCol(white_order);
+            if (Math.abs(white[0] - pos[0] + white[1] - pos[1]) === 1) {
+                return true;
+            }
+            return false;
+        }
+
+        function showMove(btn) {
+            let white_position = getRowCol(orderArray.indexOf(empty_block));
+            let block_position = getRowCol(orderArray.indexOf(btn));
+            let move = [white_position[0] - block_position[0], white_position[1] - block_position[1]];
+            let m_top = move[0] * (480 / panelSize);
+            let m_left = move[1] * (480 / panelSize);
+            let py = 0;
+            let px = 0;
+            let id = setInterval(frame, 5);
+
+            function frame() {
+                if (Math.abs(py) >= Math.abs(m_top) && Math.abs(px) >= Math.abs(m_left)) {
+                    clearInterval(id);
+                    moveBlock(btn);
+                    if(ifPressBlock) checkWhite();
+                    return new Promise(resolve => resolve(true));
+                } else {
+                    py += animateSpeed * move[0];
+                    px += animateSpeed * move[1];
+                    btn.style.top = py + 'px';
+                    btn.style.left = px + 'px';
+                }
+            }
+        }
+
+        function moveBlock(btn) {
+
+            let block_order = orderArray.indexOf(btn);
+            let white_order = orderArray.indexOf(empty_block);
+
+            btn.style.order = white_order;
+            empty_block.style.order = block_order;
+
+            orderArray[white_order] = btn;
+            orderArray[block_order] = empty_block;
+
+            btn.style.top = 0;
+            btn.style.left = 0;
+        }
+
+        function getRowCol(order) {
+            return [Math.floor(order / panelSize), order % panelSize]
+        }
+
+        function checkWhite() {
+            if (empty_block.id.split('_')[1] == empty_block.style.order) {
+                if (checkSuccess()) {
+                    $('#win_content').html("YOU WIN!!");
+                }
+            }
+            ifPressBlock = !ifPressBlock;
+        }
+
+        function checkSuccess() {
+            let btns = document.querySelectorAll('.button');
+            for (let btn of btns) {
+                if (btn.id.split('_')[1] != btn.style.order) {
+                    return false;
+                }
+            }
+            return true;
+            // for (let i = 0; i < panelSize; i++) {
+            //     let j_boundry = (i == panelSize - 1)? panelSize - 1 : panelSize;
+            //     for (let j = 0; j < j_boundry; j++) {
+            //         let t = $(`#_${i}>#_${j}>img`);
+            //         let pos = t.attr('id').replace('_',"").split("");
+            //         if(pos[0] != i || pos[1] != j){
+            //             return;
+            //         }
+            //     }
+            // }
+        }
+
+        // function getLocation(Obj) {
+        //     return parseInt(Obj.style.order);
+        // }
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
