@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="Calander.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <div class="container" id="calanderArea">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="7" id="yearMonth">Year Month</th>
+                </tr>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody id="dateRows">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container" id="btn_area">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-primary" id='btn_lastYear'>&lt&lt last Year</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" id='btn_lastMonth'>&lt&lt last Month</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" id='btn_nextMonth'>next Month &gt&gt</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" id='btn_nextYear'>next Year &gt&gt</button>
+            </div>
+        </div>
+    </div>
+
+    <template id="date_temp">
+        <tr id="date_row">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <template id="event_temp">
+        <div class="jumbotron">
+            <h4 id="event_temp_title"></h4>
+            <p class="lead" id="event_temp_start_end"></p>
+            <hr class="my-4">
+            <p id="event_temp_content"></p>
+            <div id="event_temp_btn_area">
+                <button type="button" class="btn btn-outline-success" id='btn_editEvent'>Edit</button>
+                <button type="button" class="btn btn-outline-dark" id='btn_removeEvent'>Delete</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="empty_schedule">
+        <div class="col" id="empty_schedule_area">
+            <p>YOU DON'T HAVE ANY EVENT AT THIS DAY.</p>
+            <p class="font-weight-lighter">DO YOU WANNA CREATE A NEW EVENT?</p>
+        </div>
+    </template>
+
+    <!-- schedule modal -->
+    <div class="modal fade" id="schedule" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btn_create_schedule">New Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createSchedule" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-ms" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">New Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="Event Title">Event Name</label>
+                            <input type="email" class="form-control" id="Event_Title" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="Event Content">Event Content</label>
+                            <textarea class="form-control" id="Event_Content" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="startTime">start from</label>
+                                <select class="form-control" id="startTime">
+                                    <option value="-1">--start time--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select class="form-control" id="startTimeAmPm">
+                                    <option value="0">am</option>
+                                    <option value="12">pm</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="startTime">end at</label>
+                                <select class="form-control" id="endTime">
+                                    <option value="-1">--start time--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select class="form-control" id="endTimeAmPm">
+                                    <option value="0">am</option>
+                                    <option value="12">pm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <template id="template_btn_save_schedule">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btn_save_schedule">Create Event</button>
+    </template>
+    <template id="template_btn_edit_schedule">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btn_edit_schedule">Save Changes</button>
+    </template>
+    <script>
+        let today;
+        let _year;
+        let _month;
+        let _date;
+        let calanderArea;
+        let _index = -1;
+        window.onload = initailizeCalander();
+
+        function initailizeCalander() {
+            today = new Date();
+            _year = today.getFullYear();
+            _month = today.getMonth();
+            calanderArea = document.querySelector('#calanderArea');
+            addEvent();
+            reCalander();
+        }
+
+        function addEvent() {
+            let btn_area = document.querySelector('#btn_area');
+
+            let btn_lastYear = btn_area.querySelector("#btn_lastYear");
+            btn_lastYear.addEventListener('click', moveToLastYear);
+
+            let btn_lastMonth = btn_area.querySelector("#btn_lastMonth");
+            btn_lastMonth.addEventListener('click', moveToLastMonth);
+
+            let btn_nextMonth = btn_area.querySelector("#btn_nextMonth");
+            btn_nextMonth.addEventListener('click', moveToNextMonth);
+
+            let btn_nextYear = btn_area.querySelector("#btn_nextYear");
+            btn_nextYear.addEventListener('click', moveToNextYear);
+
+            let btn_create_schedule = document.querySelector('#btn_create_schedule');
+            btn_create_schedule.addEventListener('click', openNewCreateModal);
+        }
+
+        function moveToLastYear() {
+            _year--;
+            reCalander();
+        }
+
+        function moveToLastMonth() {
+            _month--;
+            if (_month == -1) {
+                _month += 12;
+                _year--;
+            }
+            reCalander();
+        }
+
+        function moveToNextMonth() {
+            _month++;
+            if (_month == 12) {
+                _month -= 12;
+                _year++;
+            }
+            reCalander();
+        }
+
+        function moveToNextYear() {
+            _year++;
+            reCalander();
+        }
+
+        function reCalander() {
+            //clear all rows of date on the calander
+            calanderArea.querySelector('#dateRows').innerHTML = "";
+            //print all date
+            printDatesOnCalander();
+            //print year and month
+            calanderArea.querySelector('#yearMonth').innerHTML = `${_year} ${_month + 1}`;
+        }
+
+        function printDatesOnCalander() {
+            let first_day_month = new Date(_year, _month, 1).getDay();
+            let days_in_month = new Date(_year, _month + 1, 0).getDate();
+            let i = 0;
+            while (i < days_in_month) {
+                let dateCol = document.querySelector('#date_temp').content.cloneNode(true);
+                let col = dateCol.querySelectorAll('td');
+                do {
+                    let j = (first_day_month + i) % 7;
+                    col[j].innerHTML = `${i + 1}`;
+                    col[j].addEventListener('click', setDateKey);
+                    printSchedule(col[j], i + 1);
+                    i++;
+                } while ((first_day_month + i) % 7 != 0 && i < days_in_month);
+                dateRows.appendChild(dateCol)
+            }
+        }
+
+        function printSchedule(col, date) {
+            let schedule = localStorage.getItem(`${_year}_${_month}_${date}`);
+            if (schedule != null) {
+                let eventCount = JSON.parse(schedule).events.length;
+                if (eventCount != 0) {
+                    let p = document.createElement("p");
+                    p.innerHTML = `${eventCount} ${eventCount == 1 ? "event" : "events"}`
+                    col.appendChild(p);
+                    col.setAttribute('class', 'table-success');
+                }
+            }
+        }
+
+        function setDateKey() {
+            _date = parseInt(this.innerHTML);//set _date
+            openModal();
+        }
+
+        function editEvent() {
+            setChangeIndex(this);
+            setCreateModel();
+            openCreateModal(false);
+        }
+
+        function setChangeIndex(btn) {
+            _index = btn.parentElement.parentElement.id.split('_')[1];
+        }
+
+        function setCreateModel() {
+            let event = JSON.parse(localStorage.getItem(getKey())).events[_index];
+            let createModal = document.querySelector('#createSchedule');
+            // createModal.querySelector('#ModalLabel').innerHTML = "";
+            createModal.querySelector('#Event_Title').value = event.title;
+            createModal.querySelector('#Event_Content').value = event.content
+            createModal.querySelector('#startTime').selectedIndex = event.start_time % 12;
+            createModal.querySelector('#endTime').selectedIndex = event.end_time % 12;
+            createModal.querySelector('#startTimeAmPm').selectedIndex = Math.floor(event.start_time / 12);
+            createModal.querySelector('#endTimeAmPm').selectedIndex = Math.floor(event.end_time / 12);
+        }
+
+        function removeEvent() {
+            setChangeIndex(this);
+            let DateData = JSON.parse(localStorage.getItem(getKey()));
+            DateData.events.splice(_index, 1);
+            localStorage.setItem(getKey(), JSON.stringify(DateData));
+            reCalander();
+            refreshScheduleContent();
+        }
+
+        function openModal() {
+            document.querySelector('#schedule').querySelector('.modal-title').innerHTML = showDateInModal();
+            refreshScheduleContent();
+            $('#schedule').modal('toggle');
+        }
+
+        function refreshScheduleContent() {
+            let schedule_modal_body = document.querySelector('#schedule').querySelector('.modal-body');
+            schedule_modal_body.innerHTML = "";
+            let schedule = JSON.parse(localStorage.getItem(getKey()));
+            if (schedule != null && schedule.events.length != 0) {
+                loadEventsFromLocalStorage();
+            } else {
+                let template = document.querySelector('#empty_schedule').content.cloneNode(true);
+                schedule_modal_body.appendChild(template);
+            }
+        }
+
+        function showDateInModal() {
+            return new Date(_year, _month, _date).toLocaleDateString();
+        }
+
+        function loadEventsFromLocalStorage() {
+            let events = JSON.parse(localStorage.getItem(getKey())).events;
+            let fragment = new DocumentFragment();
+            events.forEach((event, index) => {
+                let template = document.querySelector('#event_temp').content.cloneNode(true);
+                template.querySelector('.jumbotron').setAttribute('id', `event_${index}`);
+                template.querySelector('#event_temp_title').innerHTML = event.title;
+                template.querySelector('#event_temp_content').innerHTML = event.content + " ";
+                let start = event.start_time.toString().padStart(2, "0");
+                let end = event.end_time.toString().padStart(2, "0");
+                template.querySelector('#event_temp_start_end').innerHTML = `${start}:00 ~ ${end}:00`;
+                template.querySelector('#btn_editEvent').addEventListener('click', editEvent);
+                template.querySelector('#btn_removeEvent').addEventListener('click', removeEvent);
+                fragment.appendChild(template);
+
+            });
+            document.querySelector('#schedule').querySelector('.modal-body').appendChild(fragment);
+        }
+
+        function getKey() {
+            return `${_year}_${_month}_${_date}`;
+        }
+
+        function openNewCreateModal() {
+            resetCreateModel();
+            openCreateModal(true);
+        }
+
+        function openCreateModal(isNew) {
+            $('#schedule').modal('toggle');
+            let modal = document.querySelector('#createSchedule');
+            modal.querySelector('.modal-title').innerHTML = showDateInModal();
+            modal.querySelector('.modal-footer').innerHTML = "";
+            attachButton(modal, isNew);
+            $('#createSchedule').modal('toggle');
+        }
+
+        function attachButton(modal, isNew) {
+            let fragment = new DocumentFragment();
+            if (isNew) {
+                fragment = document.querySelector('#template_btn_save_schedule').content.cloneNode(true);
+                fragment.querySelector('#btn_save_schedule').addEventListener('click', createEvent);
+            } else {
+                fragment = document.querySelector('#template_btn_edit_schedule').content.cloneNode(true);
+                let btn_edit = fragment.querySelector('#btn_edit_schedule');
+                btn_edit.setAttribute('id', `${_index}`);
+                btn_edit.addEventListener('click', createEvent)
+                //.setAttribute('id',`${index}`);
+            }
+
+            modal.querySelector('.modal-footer').appendChild(fragment);
+        }
+
+        function resetCreateModel() {
+            let createModal = document.querySelector('#createSchedule');
+            createModal.querySelector('#ModalLabel').innerHTML = "";
+            createModal.querySelector('#Event_Title').value = "";
+            createModal.querySelector('#Event_Content').value = "";
+            createModal.querySelector('#startTime').selectedIndex = 0;
+            createModal.querySelector('#endTime').selectedIndex = 0;
+            createModal.querySelector('#startTimeAmPm').selectedIndex = 0;
+            createModal.querySelector('#endTimeAmPm').selectedIndex = 0;
+        }
+
+        function createEvent() {
+            let isNew = this.innerHTML == "Create Event";
+            if (checkEventValid()) {
+                saveSchdule(isNew);
+                reCalander();
+                $('#createSchedule').modal('toggle');
+                openModal();
+            }
+        }
+
+        function checkEventValid() {
+            let checkTitle = checkIfTitleValid();
+            let checkTime = checkIfTimeValid();
+            return checkTitle && checkTime
+        }
+
+        function checkIfTitleValid() {
+            let strArray = document.querySelector('#Event_Title').value.split(" ");
+            for (let str of strArray) {
+                if (str != "") {
+                    return true;
+                }
+            }
+            alert("Please enter new event's name.");
+            return false;
+        }
+
+        function checkIfTimeValid() {
+            let start_time = parseInt(document.querySelector('#startTime').selectedOptions[0].value);
+            let start_ampm = parseInt(document.querySelector('#startTimeAmPm').selectedOptions[0].value);
+            let end_time = parseInt(document.querySelector('#endTime').selectedOptions[0].value);
+            let end_ampm = parseInt(document.querySelector('#endTimeAmPm').selectedOptions[0].value);
+            if (start_time == -1 || end_time == -1) {
+                alert("Please select what time dose the event begin or over.");
+                return false;
+            } else if (start_time + start_ampm > end_time + end_ampm) {
+                alert("Event's start time is later than end time.");
+                return false;
+            }
+            return true;
+        }
+
+        function saveSchdule(isNew) {
+            let DateData = JSON.parse(getScheduleValue());
+            if (isNew) {
+                DateData.events.push(createNewEvent());
+            } else {
+                DateData.events[_index] = createNewEvent();
+            }
+            localStorage.setItem(getKey(), JSON.stringify(DateData));
+        }
+
+        function getScheduleValue() {
+            let DateData = localStorage.getItem(getKey());
+            if (DateData == null) {
+                return JSON.stringify(createNewDateSchedule());
+            } else {
+                return DateData;
+            }
+        }
+
+        function createNewDateSchedule() {
+            let newDate = {
+                year: _year,
+                month: _month,
+                date: _date,
+                events: []
+            }
+            return newDate;
+        }
+
+        function createNewEvent() {
+            let newEvent = {
+                title: document.querySelector('#Event_Title').value,
+                content: document.querySelector('#Event_Content').value,
+                start_time: parseInt(document.querySelector('#startTime').selectedOptions[0].value) + parseInt(document.querySelector('#startTimeAmPm').selectedOptions[0].value),
+                end_time: parseInt(document.querySelector('#endTime').selectedOptions[0].value) + parseInt(document.querySelector('#endTimeAmPm').selectedOptions[0].value),
+                location: ""
+            }
+            return newEvent;
+        }
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+#date_row td{
+    height: 90px;
+    padding: 5px;
+    width: 14.2857142857%;
+    /* display: flex; */
+}
+
+#date_row td p{
+    display: block;
+    margin: 0;
+    max-width: 70px;
+    color: cadetblue;
+}
+
+#empty_schedule_area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#empty_schedule_area p{
+    text-align: center;
+    color: gray;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+#btn_area .row .col:nth-child(3),
+#btn_area .row .col:nth-child(4){
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+#event_temp_content{
+    min-height: 3em;
+}
+#event_temp_btn_area{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#event_temp_btn_area button+button{
+    margin-right: 10px;
+}
