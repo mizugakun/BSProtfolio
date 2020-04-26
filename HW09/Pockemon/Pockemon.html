@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <button id="addOne">add one</button>
+    <button id="delOne">delete one</button>
+    <button id="addAll">add all</button>
+    <button id="delAll">delete all</button>
+    <label id="count">0</label>
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+
+    <script>
+        let t = $(".container>.row");
+        let num = 0;
+        let str = num.toString().padStart(3, "0");
+        window.onload = addEventListeners();
+
+        function addEventListeners() {
+            $('#addOne').click(appendPokemon);
+            $('#delOne').click(deletePokemon);
+            $('#addAll').click(appendAll);
+            $('#delAll').click(deleteALL);
+        }
+
+        function appendPokemon() {
+            if (num <= 889) {
+                num++;
+                $('<img>').attr('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${num.toString().padStart(3, '0')}.png`).appendTo('.row');
+                displayNumber();
+            }
+        }
+
+        function deletePokemon() {
+            if (num >= 1) {
+                let test = $(t).children('img:last-child').remove();
+                num--;
+                displayNumber();
+            }
+        }
+
+        function appendAll() {
+            while (num <= 889) {
+                appendPokemon();
+            }
+        }
+
+        function deleteALL() {
+            t.html('');
+            num = 0;
+            displayNumber();
+        }
+        //https://assets.pokemon.com/assets/cms2/img/pokedex/detail/{num.toString().padStart(3,"0")}.png
+
+        function displayNumber() {
+            $('#count').html(`numbers of pokemon: ${num}`);
+        }
+
+
+    </script>
+</body>
+
+</html>
