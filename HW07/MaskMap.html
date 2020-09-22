@@ -65,7 +65,7 @@
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14
+                zoom: 16
             });
         }
 
@@ -76,10 +76,24 @@
             success: function (response) {
                 maskInfo = analyzeData(JSON.parse(response).features);
                 putMarker(maskInfo);
-                getUserPosition();
+                // getUserPosition();
+                setUserPosition();
                 addClickEvent();
             }
         });
+
+        function setUserPosition() {
+            // 24.8012951,120.9725958
+            navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: 24.8012951,
+                        lng: 120.9725958
+                    };
+                    map.setCenter(pos);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+        }
 
         function getUserPosition() {
             if (navigator.geolocation) {
